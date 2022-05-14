@@ -1,4 +1,7 @@
 ﻿{
+  "ConnectionStrings": {
+    "UserDatabase": "Server=studmysql01.fhict.local;Uid=dbi482834;Database=dbi482834;Pwd=Syrux79;Allow User Variables=True;"
+  },
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
