@@ -63,9 +63,49 @@ namespace DuelSys.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap calendar_icon_png_4 {
+            get {
+                object obj = ResourceManager.GetObject("calendar-icon-png-4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap elden_ring {
+            get {
+                object obj = ResourceManager.GetObject("elden-ring", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo_synthesis {
             get {
                 object obj = ResourceManager.GetObject("logo-synthesis", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap purepng_com_golden_cupgolden_cupgoldtrophymedal_1421526534718zlbrf {
+            get {
+                object obj = ResourceManager.GetObject("purepng.com-golden-cupgolden-cupgoldtrophymedal-1421526534718zlbrf", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Settings_PNG_File_Download_Free {
+            get {
+                object obj = ResourceManager.GetObject("Settings-PNG-File-Download-Free", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
