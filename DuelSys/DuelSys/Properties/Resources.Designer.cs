@@ -63,6 +63,16 @@ namespace DuelSys.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap calendar {
+            get {
+                object obj = ResourceManager.GetObject("calendar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap calendar_icon_png_4 {
             get {
                 object obj = ResourceManager.GetObject("calendar-icon-png-4", resourceCulture);
@@ -73,9 +83,29 @@ namespace DuelSys.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cup_icon_png_24 {
+            get {
+                object obj = ResourceManager.GetObject("cup-icon-png-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap elden_ring {
             get {
                 object obj = ResourceManager.GetObject("elden-ring", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap log_out_logo_icon_png_svg {
+            get {
+                object obj = ResourceManager.GetObject("log-out-logo-icon-png-svg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

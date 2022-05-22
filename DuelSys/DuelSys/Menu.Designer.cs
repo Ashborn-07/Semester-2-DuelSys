@@ -38,6 +38,7 @@
             this.btnTournament = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.flpMain = new System.Windows.Forms.FlowLayoutPanel();
             this.panelSideMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxSettings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCup)).BeginInit();
@@ -60,7 +61,7 @@
             this.panelSideMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSideMenu.Location = new System.Drawing.Point(0, 0);
             this.panelSideMenu.Name = "panelSideMenu";
-            this.panelSideMenu.Size = new System.Drawing.Size(259, 534);
+            this.panelSideMenu.Size = new System.Drawing.Size(259, 594);
             this.panelSideMenu.TabIndex = 0;
             // 
             // picBoxSettings
@@ -78,7 +79,7 @@
             // picBoxCup
             // 
             this.picBoxCup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(54)))), ((int)(((byte)(245)))));
-            this.picBoxCup.BackgroundImage = global::DuelSys.Properties.Resources.purepng_com_golden_cupgolden_cupgoldtrophymedal_1421526534718zlbrf;
+            this.picBoxCup.BackgroundImage = global::DuelSys.Properties.Resources.cup_icon_png_24;
             this.picBoxCup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.picBoxCup.Location = new System.Drawing.Point(27, 141);
             this.picBoxCup.Name = "picBoxCup";
@@ -90,7 +91,7 @@
             // picboxCalendar
             // 
             this.picboxCalendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(54)))), ((int)(((byte)(245)))));
-            this.picboxCalendar.BackgroundImage = global::DuelSys.Properties.Resources.calendar_icon_png_4;
+            this.picboxCalendar.BackgroundImage = global::DuelSys.Properties.Resources.calendar;
             this.picboxCalendar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.picboxCalendar.Location = new System.Drawing.Point(27, 199);
             this.picboxCalendar.Name = "picboxCalendar";
@@ -179,12 +180,21 @@
             this.pbLogo.TabIndex = 0;
             this.pbLogo.TabStop = false;
             // 
+            // flpMain
+            // 
+            this.flpMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpMain.Location = new System.Drawing.Point(259, 0);
+            this.flpMain.Name = "flpMain";
+            this.flpMain.Size = new System.Drawing.Size(822, 594);
+            this.flpMain.TabIndex = 1;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(81)))));
-            this.ClientSize = new System.Drawing.Size(1029, 534);
+            this.ClientSize = new System.Drawing.Size(1081, 594);
+            this.Controls.Add(this.flpMain);
             this.Controls.Add(this.panelSideMenu);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -212,5 +222,6 @@
         private PictureBox picboxCalendar;
         private PictureBox picBoxCup;
         private PictureBox picBoxSettings;
+        private FlowLayoutPanel flpMain;
     }
 }

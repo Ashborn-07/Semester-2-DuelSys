@@ -1,0 +1,22 @@
+﻿@page
+@model DuelSysWeb.Pages.LogInPageModel
+@{
+}
+
+<div class="wrapper">
+      <div class="title">Login Form</div>
+      <form method="post" class="login-form">
+        <div class="field">
+          <input type="text" asp-for="logInModel.Username" required>
+          <label>Username</label>
+        </div>
+        <div class="field">
+          <input type="password" asp-for="logInModel.Password" required>
+          <label>Password</label>
+        </div>
+        <div class="field">
+          <input type="submit" value="Login">
+        </div>
+        <div class="signup-link">Not a member? <a href="/RegisterPage">Signup now</a></div>
+      </form>
+    </div>

@@ -17,7 +17,22 @@ namespace LogicLayer
 
         public User CheckUserCredentials(string username, string password)
         {
-            return repository.CheckUserCredentials(username, password);
+            User user = repository.ReturnUserByUsername(username);
+
+            if (user != null)
+            {
+                if (BCrypt.Net.BCrypt.Verify(password, user.Password))
+                {
+                    return user;
+                }
+            }
+            return null;
+        }
+
+        public void RegisterUser(User user)
+        {
+            User newUser = new User(user.UserName, BCrypt.Net.BCrypt.HashPassword(user.Password), user.FirstName, user.LastName, user.Age, user.Gender, user.Email, user.WinRate);
+            repository.RegisterUser(newUser);
         }
     }
 }

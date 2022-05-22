@@ -22,7 +22,13 @@ namespace LogicLayer
 
         public string WinRatePercentage()
         {
-            return $"{(wins / (wins + loses)) * 100}% wr";
+            if (wins == 0 && loses == 0)
+            {
+                return "No matches were played by this user";
+            } else
+            {
+                return $"{(wins / (wins + loses)) * 100}% wr";
+            }
         }
     }
 }
