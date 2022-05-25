@@ -239,6 +239,11 @@ body.dark .search-field i {
     color: var(--text-color);
 }
 
+.logout {
+    background-color: var(--nav--color);
+    color: var(--text-color);
+}
+
 @media (max-width: 790px) {
     nav .nav-bar .sidebarOpen {
         display: block;
@@ -597,7 +602,7 @@ form .signup-link {
 
 @media(max-width: 459px) {
     .wrapper {
-        margin-top: 150px;
+        margin-top: 140px;
         margin-left: 5px;
     }
 }

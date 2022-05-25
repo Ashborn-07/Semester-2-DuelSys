@@ -31,8 +31,9 @@
                         
                         @if (User.Identity.IsAuthenticated)
                         {
+                            <li><a asp-page="/TournamentPage">Tournaments</a></li>
                             <li><a asp-page="">Profile</a></li>
-                            <li><a asp-page="">Log Out</a></li>
+                            <li><form method="post" asp-page="/LogOut" style="display: inline-block;"><button type="submit" class="logout">Log Out</button></form></li>
                         }
                         else
                         {

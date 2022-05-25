@@ -33,8 +33,6 @@ namespace DuelSysWeb.Pages
             IUserRepository repository = new UserRepository(Configuration.GetConnectionString("MyConn"));
             service = new UserService(repository);
 
-            string password = BCrypt.Net.BCrypt.HashPassword("shadow79");
-
             if (ModelState.IsValid)
             {
                 User user;

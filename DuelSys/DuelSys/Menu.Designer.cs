@@ -38,7 +38,7 @@
             this.btnTournament = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.pbLogo = new System.Windows.Forms.PictureBox();
-            this.flpMain = new System.Windows.Forms.FlowLayoutPanel();
+            this.panelForm = new System.Windows.Forms.Panel();
             this.panelSideMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxSettings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCup)).BeginInit();
@@ -67,7 +67,7 @@
             // picBoxSettings
             // 
             this.picBoxSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(54)))), ((int)(((byte)(245)))));
-            this.picBoxSettings.BackgroundImage = global::DuelSys.Properties.Resources.Settings_PNG_File_Download_Free;
+            this.picBoxSettings.BackgroundImage = global::DuelSys.Properties.Resources.settings;
             this.picBoxSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.picBoxSettings.Location = new System.Drawing.Point(27, 315);
             this.picBoxSettings.Name = "picBoxSettings";
@@ -79,7 +79,7 @@
             // picBoxCup
             // 
             this.picBoxCup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(54)))), ((int)(((byte)(245)))));
-            this.picBoxCup.BackgroundImage = global::DuelSys.Properties.Resources.cup_icon_png_24;
+            this.picBoxCup.BackgroundImage = global::DuelSys.Properties.Resources.trophy;
             this.picBoxCup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.picBoxCup.Location = new System.Drawing.Point(27, 141);
             this.picBoxCup.Name = "picBoxCup";
@@ -91,7 +91,7 @@
             // picboxCalendar
             // 
             this.picboxCalendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(54)))), ((int)(((byte)(245)))));
-            this.picboxCalendar.BackgroundImage = global::DuelSys.Properties.Resources.calendar;
+            this.picboxCalendar.BackgroundImage = global::DuelSys.Properties.Resources.calendar1;
             this.picboxCalendar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.picboxCalendar.Location = new System.Drawing.Point(27, 199);
             this.picboxCalendar.Name = "picboxCalendar";
@@ -180,13 +180,13 @@
             this.pbLogo.TabIndex = 0;
             this.pbLogo.TabStop = false;
             // 
-            // flpMain
+            // panelForm
             // 
-            this.flpMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpMain.Location = new System.Drawing.Point(259, 0);
-            this.flpMain.Name = "flpMain";
-            this.flpMain.Size = new System.Drawing.Size(822, 594);
-            this.flpMain.TabIndex = 1;
+            this.panelForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelForm.Location = new System.Drawing.Point(259, 0);
+            this.panelForm.Name = "panelForm";
+            this.panelForm.Size = new System.Drawing.Size(822, 594);
+            this.panelForm.TabIndex = 1;
             // 
             // Menu
             // 
@@ -194,12 +194,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(81)))));
             this.ClientSize = new System.Drawing.Size(1081, 594);
-            this.Controls.Add(this.flpMain);
+            this.Controls.Add(this.panelForm);
             this.Controls.Add(this.panelSideMenu);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Menu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Menu_FormClosing);
             this.panelSideMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxSettings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxCup)).EndInit();
@@ -222,6 +224,6 @@
         private PictureBox picboxCalendar;
         private PictureBox picBoxCup;
         private PictureBox picBoxSettings;
-        private FlowLayoutPanel flpMain;
+        private Panel panelForm;
     }
 }

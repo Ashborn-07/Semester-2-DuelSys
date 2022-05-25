@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LogicLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,18 @@ namespace LogicLayer
         public Tournament(int id, string name, string description, string location, Sport sport, TournamentTime time, string type, int max_players, int min_players)
         {
             this.id = id;
+            this.name = name;
+            this.description = description;
+            this.location = location;
+            this.sport = sport;
+            this.time = time;
+            this.type = type;
+            this.max_players = max_players;
+            this.min_players = min_players;
+        }
+
+        public Tournament(string name, string description, string location, Sport sport, TournamentTime time, string type, int max_players, int min_players)
+        {
             this.name = name;
             this.description = description;
             this.location = location;

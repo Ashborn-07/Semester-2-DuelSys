@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using LogicLayer;
 
 namespace DataAccessLayer
 {
@@ -25,7 +26,13 @@ namespace DataAccessLayer
             if (con == null)
             {
                 con = new MySqlConnection(path);
-                con.Open();
+                try
+                {
+                    con.Open();
+                } catch (MySqlException ex)
+                {
+                    throw new ConnectionException("Cannot connect to server");
+                }
             }
         }
 

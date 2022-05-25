@@ -11,6 +11,9 @@ namespace LogicLayer
         private int id;
         private string name;
 
+        public int Id { get { return id; } }
+        public string Name { get { return name; } }
+
         public Sport(int id, string name)
         {
             this.id = id;
