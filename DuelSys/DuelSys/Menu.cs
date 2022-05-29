@@ -16,7 +16,7 @@ namespace DuelSys
         {
             ColorRessetter();
             panelForm.Controls.Clear();
-            OpenChildForm(new TournamentForm());
+            OpenChildForm(new TournamentForm(this));
             panelForm.Controls.Add(currentChildForm);
             btnTournament.BackColor = ColorTranslator.FromHtml("#007F97");
             picBoxCup.BackColor = ColorTranslator.FromHtml("#007F97");

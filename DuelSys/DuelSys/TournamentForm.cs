@@ -16,15 +16,22 @@ namespace DuelSys
     public partial class TournamentForm : Form
     {
         private TournamentService service;
+        private Menu menu;
 
-        public TournamentForm()
+        public TournamentForm(Menu menu)
         {
             InitializeComponent();
             ITournamentRepository repository = new TournamentRepository(ConfigurationManager.ConnectionStrings["phpma"].ToString());
             service = new TournamentService(repository);
+            this.menu = menu;
         }
 
         private void Tournament_Load(object sender, EventArgs e)
+        {
+            LoadTournaments();
+        }
+
+        public void LoadTournaments()
         {
             flPanelTournament.Controls.Clear();
             List<Tournament> tournaments;
@@ -32,7 +39,8 @@ namespace DuelSys
             try
             {
                 tournaments = service.GetTournaments();
-            } catch (ConnectionException ex)
+            }
+            catch (ConnectionException ex)
             {
                 Alert(ex.Message, enmType.Error);
                 return;
@@ -49,7 +57,7 @@ namespace DuelSys
 
         private void btnCreateTournament_Click(object sender, EventArgs e)
         {
-            CreateTournament createTournament = new CreateTournament();
+            CreateTournament createTournament = new CreateTournament(this);
             createTournament.ShowDialog();
         }
 

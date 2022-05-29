@@ -1,0 +1,54 @@
+﻿@page
+@model DuelSysWeb.Pages.ScheduleModel
+@{
+}
+<!-- Tournament go smeni s match class po kysno -->
+<!-- Sushto taka da se napravi i za minalite matchove kato se pokazva i rezultata -->
+<div class="Event">
+    @foreach (var tournament in Model.tournaments)
+    {
+
+        if (DateTime.Now <= tournament.Time.Start)
+        {
+            if (Model.oldDate != tournament.Time.Start)
+            {
+                <div class="EventDate">
+                    <div class="date">
+                        <span class="weekday">@tournament.Time.Start.DayOfWeek</span>
+                        <span class="dash">-</span>
+                        <span class="monthday">@tournament.Time.Start.ToString("M")</span>
+                    </div>
+                </div>
+            }
+
+            <div class="EventMatch">
+                <div class="single future event">
+                    <div class="EventTime"></div>
+                    <div class="teams">
+                        <div class="team team1">
+                            <div class="team-info">
+                                <h2>
+                                    <span class="name">@tournament.Name</span>
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="versus">VS </div>
+                        <div class="team team2">
+                            <div class="team-info">
+                                <h2>
+                                    <span class="name">@tournament.Name</span>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="button" class="league">
+                        <div class="name">MSI</div>
+                        <div class="strategy">best of 3</div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        Model.oldDate = tournament.Time.Start;
+    }
+</div>

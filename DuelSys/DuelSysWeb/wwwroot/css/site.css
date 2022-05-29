@@ -606,3 +606,269 @@ form .signup-link {
         margin-left: 5px;
     }
 }
+
+/*Schedule page*/
+
+.Event {
+    animation: fadein .8s;
+    position: relative;
+    margin-top: 100px;
+}
+
+.EventDate {
+    display: inline-block;
+}
+
+    .EventDate .date {
+        margin: 0 34px;
+        padding: 48px 0 15px 0;
+        font-size: 1.8rem;
+        font-weight: normal;
+    }
+
+        .EventDate .date .weekday {
+            font-weight: bold;
+        }
+
+        .EventDate .date .dash {
+            padding: 0 4px;
+        }
+
+.EventMatch .event.future {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    width: calc(((100% - 442px) / 12) * 12 + 374px);
+    height: 100px;
+    margin: 0 34px;
+}
+
+    .EventMatch .event.future:before {
+        position: absolute;
+        top: -1px;
+        left: calc(((100% - 442px) / 12) * 2 + 68px);
+        right: 0;
+        height: 1px;
+        content: '';
+        display: block;
+        background: #252c32;
+    }
+
+.EventTime {
+    display: inline-block;
+    flex: 0 0 110px;
+}
+
+.EventMatch .teams {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    text-align: center;
+    position: relative;
+}
+
+    .EventMatch .teams .team1 {
+        text-align: right;
+        justify-content: flex-start;
+        flex-direction: row-reverse;
+    }
+
+        .EventMatch .teams .team1 .team-info {
+            padding-right: 12px;
+        }
+
+.EventMatch .versus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 88px;
+    color: #8fa3b0;
+    font-size: 1.4rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+}
+
+.EventMatch .teams .team2 {
+    text-align: left;
+    justify-content: flex-start;
+}
+
+    .EventMatch .teams .team2 .team-info {
+        padding-left: 12px;
+    }
+
+.EventMatch .league {
+    flex: 0 0 110px;
+    color: #8fa3b0;
+    font-size: 1.4rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    text-align: right;
+}
+
+    .EventMatch .league .name {
+        text-transform: uppercase;
+    }
+
+    .EventMatch .league .strategy {
+        text-transform: uppercase;
+    }
+
+.EventMatch .event.future:after {
+    position: absolute;
+    bottom: 0;
+    left: calc(((100% - 442px) / 12) * 2 + 68px);
+    right: 0;
+    height: 1px;
+    content: '';
+    display: block;
+    background: #252c32;
+}
+
+/*Tournament page*/
+.event-container {
+    font-family: "Roboto", sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+    .event-container h3.year {
+        font-size: 40px;
+        text-align: center;
+        border-bottom: 1px solid #b1b1b1;
+    }
+
+    .event-container .event {
+        box-shadow: 0 4px 16px -8px rgba(0, 0, 0, 0.4);
+        display: flex;
+        border-radius: 8px;
+        margin: 32px 0;
+    }
+
+.event .event-left {
+    background: #222;
+    min-width: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #eee;
+    padding: 8px 48px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px 0 0 8px;
+}
+
+    .event .event-left .date {
+        font-size: 56px;
+    }
+
+    .event .event-left .month {
+        font-size: 16px;
+        font-weight: normal;
+    }
+
+    .event .event-left .input-none {
+        display: none;
+    }
+
+.event .event-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 24px;
+    min-width: 500px;
+}
+
+    .event .event-right h3.event-title {
+        font-size: 24px;
+        margin: 24px 0 10px 0;
+        color: #218bbb;
+        text-transform: uppercase;
+    }
+
+    .event .event-right .event-timing {
+        background: #fff8ba;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        padding: 8px;
+        border-radius: 16px;
+        margin: 24px 0;
+        font-size: 14px;
+    }
+
+        .event .event-right .event-timing img {
+            height: 20px;
+            padding-right: 8px;
+        }
+
+.event .event-end {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 24px;
+}
+
+    .event .event-end .participate {
+        height: 30%;
+        width: 115%;
+        border-radius: 5px;
+        border: none;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    }
+
+        .event .event-end .participate:hover {
+            background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+        }
+
+    .event .event-end .expired {
+        pointer-events: none;
+    }
+
+    .event .event-end .cancel {
+        height: 30%;
+        width: 115%;
+        border-radius: 5px;
+        border: none;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background-color: red;
+    }
+
+    .event .event-end .input-none {
+        display: none;
+    }
+
+@media (max-width: 550px) {
+    .event {
+        flex-direction: column;
+    }
+
+        .event .event-left {
+            padding: 0;
+            border-radius: 8px 8px 0 0;
+        }
+
+            .event .event-left .event-date .date,
+            .event .event-left .event-date .month {
+                display: inline-block;
+                font-size: 24px;
+            }
+
+            .event .event-left .event-date {
+                padding: 10px 0;
+            }
+}

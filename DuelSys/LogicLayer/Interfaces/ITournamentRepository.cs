@@ -13,5 +13,15 @@ namespace LogicLayer
         public abstract List<Tournament> ListOfTournaments();
 
         public abstract int CreateTournament(Tournament tournament);
+
+        public abstract void RegisterPlayer(int tournamentId, int playerId);
+
+        public abstract bool PlayerAlreadyRegistered(int tournamentId, int playerId);
+
+        public abstract void CancelRegistrationTournament(int tournamentId, int playerId);
+
+        public abstract int CountOfPlayers(int tournamentId);
+
+        public abstract List<User> ListOfUsers(int tournamentId);
     }
 }

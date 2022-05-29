@@ -47,5 +47,17 @@
             this.email = email;
             this.winRate = winRate;
         }
+
+        public User(int id, string username, string firstName, string lastName, int age, Gender gender, string email, WinRate winRate) 
+        {
+            this.id = id;
+            this.username = username;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.age = age;
+            this.gender = gender;
+            this.email = email;
+            this.winRate = winRate;
+        }
     }
 }

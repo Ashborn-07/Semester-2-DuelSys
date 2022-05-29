@@ -16,12 +16,14 @@ namespace DuelSys
     public partial class CreateTournament : Form
     {
         private TournamentService service;
+        private TournamentForm tournamentForm;
 
-        public CreateTournament()
+        public CreateTournament(TournamentForm tournamentForm)
         {
             InitializeComponent();
             ITournamentRepository repository = new TournamentRepository(ConfigurationManager.ConnectionStrings["phpma"].ToString());
             service = new TournamentService(repository);
+            this.tournamentForm = tournamentForm;
         }
 
         private void CreateTournament_Load(object sender, EventArgs e)
@@ -77,6 +79,11 @@ namespace DuelSys
         {
             Notification frm = new Notification();
             frm.showAlert(msg, type);
+        }
+
+        private void CreateTournament_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            tournamentForm.LoadTournaments();
         }
     }
 }

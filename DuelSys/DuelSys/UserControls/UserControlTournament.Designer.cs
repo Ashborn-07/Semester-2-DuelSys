@@ -48,11 +48,12 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(57, 83);
             this.panel1.TabIndex = 0;
+            this.panel1.DoubleClick += new System.EventHandler(this.UserControlTournament_DoubleClick);
             // 
             // lblTournamentId
             // 
             this.lblTournamentId.AutoSize = true;
-            this.lblTournamentId.Cursor = System.Windows.Forms.Cursors.No;
+            this.lblTournamentId.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblTournamentId.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTournamentId.ForeColor = System.Drawing.Color.White;
             this.lblTournamentId.Location = new System.Drawing.Point(7, 28);
@@ -60,6 +61,7 @@
             this.lblTournamentId.Size = new System.Drawing.Size(34, 21);
             this.lblTournamentId.TabIndex = 0;
             this.lblTournamentId.Text = "ID: ";
+            this.lblTournamentId.DoubleClick += new System.EventHandler(this.UserControlTournament_DoubleClick);
             // 
             // panel2
             // 
@@ -70,11 +72,12 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(188, 83);
             this.panel2.TabIndex = 1;
+            this.panel2.DoubleClick += new System.EventHandler(this.UserControlTournament_DoubleClick);
             // 
             // lblEndTime
             // 
             this.lblEndTime.AutoSize = true;
-            this.lblEndTime.Cursor = System.Windows.Forms.Cursors.No;
+            this.lblEndTime.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblEndTime.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblEndTime.ForeColor = System.Drawing.Color.White;
             this.lblEndTime.Location = new System.Drawing.Point(9, 52);
@@ -82,11 +85,12 @@
             this.lblEndTime.Size = new System.Drawing.Size(45, 21);
             this.lblEndTime.TabIndex = 5;
             this.lblEndTime.Text = "End: ";
+            this.lblEndTime.DoubleClick += new System.EventHandler(this.UserControlTournament_DoubleClick);
             // 
             // lblStartTime
             // 
             this.lblStartTime.AutoSize = true;
-            this.lblStartTime.Cursor = System.Windows.Forms.Cursors.No;
+            this.lblStartTime.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblStartTime.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblStartTime.ForeColor = System.Drawing.Color.White;
             this.lblStartTime.Location = new System.Drawing.Point(3, 15);
@@ -94,11 +98,12 @@
             this.lblStartTime.Size = new System.Drawing.Size(53, 21);
             this.lblStartTime.TabIndex = 4;
             this.lblStartTime.Text = "Start: ";
+            this.lblStartTime.DoubleClick += new System.EventHandler(this.UserControlTournament_DoubleClick);
             // 
             // lblTournamentName
             // 
             this.lblTournamentName.AutoSize = true;
-            this.lblTournamentName.Cursor = System.Windows.Forms.Cursors.No;
+            this.lblTournamentName.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblTournamentName.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTournamentName.ForeColor = System.Drawing.Color.White;
             this.lblTournamentName.Location = new System.Drawing.Point(63, 21);
@@ -106,11 +111,12 @@
             this.lblTournamentName.Size = new System.Drawing.Size(77, 30);
             this.lblTournamentName.TabIndex = 2;
             this.lblTournamentName.Text = "Label1";
+            this.lblTournamentName.DoubleClick += new System.EventHandler(this.UserControlTournament_DoubleClick);
             // 
             // lblRegisteredPlayers
             // 
             this.lblRegisteredPlayers.AutoSize = true;
-            this.lblRegisteredPlayers.Cursor = System.Windows.Forms.Cursors.No;
+            this.lblRegisteredPlayers.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblRegisteredPlayers.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblRegisteredPlayers.ForeColor = System.Drawing.Color.White;
             this.lblRegisteredPlayers.Location = new System.Drawing.Point(63, 52);
@@ -118,11 +124,12 @@
             this.lblRegisteredPlayers.Size = new System.Drawing.Size(149, 21);
             this.lblRegisteredPlayers.TabIndex = 3;
             this.lblRegisteredPlayers.Text = "Players registered: ";
+            this.lblRegisteredPlayers.DoubleClick += new System.EventHandler(this.UserControlTournament_DoubleClick);
             // 
             // lblSport
             // 
             this.lblSport.AutoSize = true;
-            this.lblSport.Cursor = System.Windows.Forms.Cursors.No;
+            this.lblSport.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblSport.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblSport.ForeColor = System.Drawing.Color.White;
             this.lblSport.Location = new System.Drawing.Point(243, 52);
@@ -130,6 +137,7 @@
             this.lblSport.Size = new System.Drawing.Size(59, 21);
             this.lblSport.TabIndex = 6;
             this.lblSport.Text = "Sport: ";
+            this.lblSport.DoubleClick += new System.EventHandler(this.UserControlTournament_DoubleClick);
             // 
             // UserControlTournament
             // 
@@ -141,6 +149,7 @@
             this.Controls.Add(this.lblTournamentName);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "UserControlTournament";
             this.Size = new System.Drawing.Size(615, 83);
             this.Load += new System.EventHandler(this.UserControlTournament_Load);

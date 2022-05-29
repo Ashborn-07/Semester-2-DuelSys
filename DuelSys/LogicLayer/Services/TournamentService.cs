@@ -26,7 +26,7 @@ namespace LogicLayer
             {
                 throw new ConnectionException(ex.Message);
             }
-            
+
         }
 
         public List<Tournament> GetTournaments()
@@ -41,7 +41,7 @@ namespace LogicLayer
             {
                 throw new ConnectionException(ex.Message);
             }
-          
+
 
             return tournaments.OrderBy(x => x.Time.Start).ToList();
         }
@@ -56,7 +56,65 @@ namespace LogicLayer
             {
                 throw new ConnectionException(ex.Message);
             }
-            
+
+        }
+
+        public void RegisterPlayer(int tournamentId, int PlayerId)
+        {
+            try
+            {
+                if (!repository.PlayerAlreadyRegistered(tournamentId, PlayerId))
+                {
+                    repository.RegisterPlayer(tournamentId, PlayerId);
+                }
+            } catch (ConnectionException ex)
+            {
+                throw new ConnectionException(ex.Message);
+            }
+        }
+
+        public bool PleyerAlreadyRegistered(int tournamentId, int PlayerId)
+        {
+            try
+            {
+                return repository.PlayerAlreadyRegistered(tournamentId, PlayerId);
+            } catch (ConnectionException ex)
+            {
+                throw new ConnectionException(ex.Message);
+            }
+        }
+
+        public void CancelRegistrationTournament(int tournamentId, int playerId)
+        {
+            try
+            {
+                repository.CancelRegistrationTournament(tournamentId, playerId);
+            } catch (ConnectionException ex)
+            {
+                throw new ConnectionException(ex.Message);
+            }
+        }
+
+        public int PlayerCountOfTournament(int tournamentId)
+        {
+            try
+            {
+                return repository.CountOfPlayers(tournamentId);
+            } catch (ConnectionException ex)
+            {
+                throw new ConnectionException(ex.Message);
+            }
+        }
+
+        public List<User> ListOfUsersOfTournament(int tournamentId)
+        {
+            try
+            {
+                return repository.ListOfUsers(tournamentId);
+            } catch (ConnectionException ex)
+            {
+                throw new ConnectionException(ex.Message);
+            }
         }
     }
 }

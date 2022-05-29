@@ -109,5 +109,132 @@ namespace DataAccessLayer
 
             return i;
         }
+
+        public void RegisterPlayer(int tournamentId, int playerId)
+        {
+            Connect();
+
+            string sql = "INSERT INTO synth_contestants (`tournament_id`, `player_id`) VALUES (@tournamentId, @playerId)";
+            Cmd = new MySqlCommand(sql, Con);
+            Cmd.Parameters.AddWithValue("@tournamentId", tournamentId);
+            Cmd.Parameters.AddWithValue("@playerId", playerId);
+
+            try
+            {
+                Cmd.ExecuteNonQuery();
+            } finally
+            {
+                Disconnect();
+            }
+        }
+
+        public bool PlayerAlreadyRegistered(int tournamentId, int playerId)
+        {
+            bool valid = false;
+
+            Connect();
+
+            string sql = "SELECT * FROM synth_contestants WHERE `tournament_id` = @tournamentId AND `player_id` = @playerId";
+            Cmd = new MySqlCommand(sql, Con);
+            Cmd.Parameters.AddWithValue("@tournamentId", tournamentId);
+            Cmd.Parameters.AddWithValue("@playerId", playerId);
+
+            try
+            {
+                Reader = Cmd.ExecuteReader();
+
+                if (Reader.Read())
+                {
+                    valid = true;
+                }
+            }
+            finally
+            {
+                Disconnect();
+            }
+
+            return valid;
+        }
+
+        public void CancelRegistrationTournament(int tournamentId, int playerId)
+        {
+            Connect();
+
+            string sql = "DELETE FROM synth_contestants WHERE `tournament_id` = @tournamentId AND `player_id` = @playerId";
+            Cmd = new MySqlCommand(sql, Con);
+            Cmd.Parameters.AddWithValue("@tournamentId", tournamentId);
+            Cmd.Parameters.AddWithValue("@playerId", playerId);
+
+            try
+            {
+                Cmd.ExecuteNonQuery();
+            } finally
+            {
+                Disconnect();
+            }
+        }
+
+        public int CountOfPlayers(int tournamentId)
+        {
+            int players = 0;
+
+            Connect();
+
+            string sql = "SELECT COUNT(player_id) FROM synth_contestants WHERE tournament_id = @tournamentId";
+            Cmd = new MySqlCommand(sql, Con);
+            Cmd.Parameters.AddWithValue("@tournamentId", tournamentId);
+
+            try
+            {
+                Reader = Cmd.ExecuteReader();
+
+                if (Reader.Read())
+                {
+                    players = Reader.GetInt32(0);
+                }
+            } finally
+            {
+                Disconnect();
+            }
+
+            return players;
+        }
+
+        public List<User> ListOfUsers(int tournamentId)
+        {
+            List<User> users = new List<User>();
+
+            Connect();
+
+            string sql = "SELECT * FROM synth_contestants AS c INNER JOIN synth_user AS u ON c.player_id = u.id WHERE c.tournament_id = @tournamentId";
+            Cmd = new MySqlCommand(sql, Con);
+            Cmd.Parameters.AddWithValue("@tournamentId", tournamentId);
+
+            try
+            {
+                Reader = Cmd.ExecuteReader();
+
+                while(Reader.Read())
+                {
+                    int id = Reader.GetInt32(2);
+                    string username = Reader.GetString(3);
+                    string firstName = Reader.GetString(5);
+                    string lastName = Reader.GetString(6);
+                    int age = Reader.GetInt32(7);
+                    string gender = Reader.GetString(8);
+                    string email = Reader.GetString(9);
+                    int wins = Reader.GetInt32(10);
+                    int loses = Reader.GetInt32(11);
+
+                    User user = new User(id, username, firstName, lastName, age, (Gender)Enum.Parse(typeof(Gender), gender), email, new WinRate(wins, loses));
+                    users.Add(user);
+                }
+            } finally
+            {
+                Disconnect();
+            }
+
+            return users;
+        }
     }
 }
