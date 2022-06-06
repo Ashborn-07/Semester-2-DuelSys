@@ -31,22 +31,37 @@ namespace DuelSys
 
         private void TournamentInformation_Load(object sender, EventArgs e)
         {
-            try
-            {
-                dgvPlayers.DataSource = service.ListOfUsersOfTournament(tournament.Id);
-            } catch (ConnectionException ex)
-            {
-                Alert(ex.Message, enmType.Error);
-            } catch (Exception ex)
-            {
-                Alert(ex.Message, enmType.Warning);
-            }
+            tbTournamentName.Text = tournament.Name;
+            tbDescription.Text = tournament.Description;
+            tbLocation.Text = tournament.Location;
         }
 
         public void Alert(string msg, enmType type)
         {
             Notification frm = new Notification();
             frm.showAlert(msg, type);
+        }
+
+        private void btnUpdateTournament_Click(object sender, EventArgs e)
+        {
+            Tournament newTournament = tournament;
+            newTournament.Name = tbTournamentName.Text;
+            newTournament.Description = tbDescription.Text;
+            newTournament.Location = tbLocation.Text;
+
+            try
+            {
+                service.UpdateTournament(tournament);
+            } catch (ConnectionException ex)
+            {
+                Alert(ex.Message, enmType.Error);
+            }
+        }
+
+        private void btnDeleteTournament_Click(object sender, EventArgs e)
+        {
+            ConfirmationForm confirmationForm = new ConfirmationForm(tournament, service);
+            confirmationForm.ShowDialog();
         }
     }
 }

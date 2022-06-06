@@ -66,7 +66,24 @@ namespace DataAccessLayer
                     int maxPlayers = Reader.GetInt32(9);
                     string sport_name = Reader.GetString(11);
 
-                    Sport sport = new Sport(sport_id, sport_name);
+                    Sport sport = null;
+
+                    switch(sport_name)
+                    {
+                        case "Basketball":
+                            sport = new Basketball(sport_id, sport_name);
+                            break;
+                        case "Football":
+                            sport = new Football(sport_id, sport_name);
+                            break;
+                        case "Badminton":
+                            sport = new Badminton(sport_id, sport_name);
+                            break;
+                        case "League Of Legends Esport":
+                            sport = new LeagueOfLegends(sport_id, sport_name);
+                            break;
+                    }
+
                     TournamentTime tournamentTime = new TournamentTime(start, end);
 
                     tournaments.Add(new Tournament(id, name, description, location, sport, tournamentTime, type, maxPlayers, minPlayers));
@@ -235,6 +252,29 @@ namespace DataAccessLayer
             }
 
             return users;
+        }
+
+        public void UpdateTournament(Tournament tournament)
+        {
+            Connect();
+
+            string sql = "UPDATE synth_tournament SET name = @name, description = @description, location = @location WHERE id = @id";
+            Cmd = new MySqlCommand(sql, Con);
+            Cmd.Parameters.AddWithValue("@name", tournament.Name);
+            Cmd.Parameters.AddWithValue("@description", tournament.Description);
+            Cmd.Parameters.AddWithValue("@location", tournament.Location);
+            
+            Cmd.ExecuteNonQuery();
+        }
+
+        public void DeleteTournament(int tournamentId)
+        {
+            Connect();
+
+            string sql = "DELETE FROM synth_tournament WHERE id = @id";
+            Cmd = new MySqlCommand(sql, Con);
+            Cmd.Parameters.AddWithValue("@id", tournamentId);
+            Cmd.ExecuteNonQuery();
         }
     }
 }

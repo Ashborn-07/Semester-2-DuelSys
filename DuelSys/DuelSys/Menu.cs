@@ -26,18 +26,9 @@ namespace DuelSys
         {
             ColorRessetter();
             panelForm.Controls.Clear();
-            //
+            OpenChildForm(new ScheduleForm(this));
             btnSchedule.BackColor = ColorTranslator.FromHtml("#007F97");
             picboxCalendar.BackColor = ColorTranslator.FromHtml("#007F97");
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            ColorRessetter();
-            panelForm.Controls.Clear();
-            //
-            button3.BackColor = ColorTranslator.FromHtml("#007F97");
-            //picBoxCup.BackColor = ColorTranslator.FromHtml("#007F97");
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
@@ -57,7 +48,6 @@ namespace DuelSys
             picboxCalendar.BackColor = ColorTranslator.FromHtml("#6036F5");
             btnSettings.BackColor = ColorTranslator.FromHtml("#6036F5");
             picBoxSettings.BackColor = ColorTranslator.FromHtml("#6036F5");
-            button3.BackColor = ColorTranslator.FromHtml("#6036F5");
         }
 
         private void OpenChildForm(Form form)

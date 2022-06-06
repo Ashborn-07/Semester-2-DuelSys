@@ -279,6 +279,7 @@
             this.dTimeStart.Name = "dTimeStart";
             this.dTimeStart.Size = new System.Drawing.Size(265, 29);
             this.dTimeStart.TabIndex = 37;
+            this.dTimeStart.ValueChanged += new System.EventHandler(this.dTimeStart_ValueChanged);
             // 
             // dTimeEnd
             // 

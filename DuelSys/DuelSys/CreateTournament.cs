@@ -34,10 +34,11 @@ namespace DuelSys
             try
             {
                 sports = service.GetListOfSports();
-            } catch (ConnectionException ex)
+            }
+            catch (ConnectionException ex)
             {
                 Alert(ex.Message, enmType.Error);
-                return; 
+                return;
             }
 
             foreach (var sport in sports)
@@ -57,14 +58,15 @@ namespace DuelSys
             DateTime start = dTimeStart.Value;
             DateTime end = dTimeEnd.Value;
 
-            Tournament tournament = new Tournament(tbTournamentName.Text, tbDescription.Text, tbLocation.Text, 
-                new Sport(cbSport.SelectedIndex, cbSport.SelectedIndex.ToString()), new TournamentTime(start, end), 
+            Tournament tournament = new Tournament(tbTournamentName.Text, tbDescription.Text, tbLocation.Text,
+                GetSportObject(), new TournamentTime(start, end),
                 cbSystem.SelectedItem.ToString(), Convert.ToInt32(numMaxPlayers.ValueNumber), Convert.ToInt32(numMinPlayers.ValueNumber));
 
             try
             {
                 service.CreateTournament(tournament);
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Alert(ex.Message, enmType.Error);
                 return;
@@ -84,6 +86,28 @@ namespace DuelSys
         private void CreateTournament_FormClosing(object sender, FormClosingEventArgs e)
         {
             tournamentForm.LoadTournaments();
+        }
+
+        private Sport GetSportObject()
+        {
+            switch (cbSport.SelectedIndex)
+            {
+                case 0:
+                    return new Basketball(cbSport.SelectedIndex + 1, cbSport.SelectedItem.ToString());
+                case 1:
+                    return new Football(cbSport.SelectedIndex + 1, cbSport.SelectedItem.ToString());
+                case 2:
+                    return new Badminton(cbSport.SelectedIndex + 1, cbSport.SelectedItem.ToString());
+                case 3:
+                    return new LeagueOfLegends(cbSport.SelectedIndex + 1, cbSport.SelectedItem.ToString());
+                default:
+                    return new Badminton(cbSport.SelectedIndex + 1, cbSport.SelectedItem.ToString());
+            }
+        }
+
+        private void dTimeStart_ValueChanged(object sender, EventArgs e)
+        {
+            dTimeEnd.Value = dTimeStart.Value;
         }
     }
 }

@@ -16,11 +16,11 @@ namespace DataAccessLayer
             this.path = path;
         }
 
-        public MySqlConnection Con { get { return con; } }
-        public MySqlCommand Cmd { get { return cmd; } set { cmd = value; } }
-        public MySqlDataReader Reader { get { return reader; } set { reader = value; } }
+        protected MySqlConnection Con { get { return con; } }
+        protected MySqlCommand Cmd { get { return cmd; } set { cmd = value; } }
+        protected MySqlDataReader Reader { get { return reader; } set { reader = value; } }
 
-        public void Connect()
+        protected void Connect()
         {
             //"Server=studmysql01.fhict.local;Uid=dbi482834;Database=dbi482834;Pwd=Syrux79;Allow User Variables=True"
             if (con == null)
@@ -29,14 +29,15 @@ namespace DataAccessLayer
                 try
                 {
                     con.Open();
-                } catch (MySqlException ex)
+                } catch (MySqlException)
                 {
+                    Disconnect();
                     throw new ConnectionException("Cannot connect to server");
                 }
             }
         }
 
-        public void Disconnect()
+        protected void Disconnect()
         {
             if (con.State == System.Data.ConnectionState.Open && con != null)
             {

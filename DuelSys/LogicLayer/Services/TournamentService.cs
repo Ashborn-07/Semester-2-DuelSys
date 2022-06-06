@@ -116,5 +116,27 @@ namespace LogicLayer
                 throw new ConnectionException(ex.Message);
             }
         }
+
+        public void UpdateTournament(Tournament tournament)
+        {
+            try
+            {
+                repository.UpdateTournament(tournament);
+            } catch (ConnectionException ex)
+            {
+                throw new ConnectionException(ex.Message);
+            }
+        }
+
+        public void DeleteTournament(int tournamentId)
+        {
+            try
+            {
+                repository.DeleteTournament(tournamentId);
+            } catch (ConnectionException ex)
+            {
+                throw new ConnectionException(ex.Message);
+            }
+        }
     }
 }

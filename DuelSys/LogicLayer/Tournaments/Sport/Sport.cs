@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LogicLayer
 {
-    public class Sport
+    public abstract class Sport
     {
         private int id;
         private string name;
@@ -19,5 +19,7 @@ namespace LogicLayer
             this.id = id;
             this.name = name;
         }
+
+        public abstract Match MatchResultValidation(Match match);
     }
 }

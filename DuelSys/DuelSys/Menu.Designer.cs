@@ -33,7 +33,6 @@
             this.picBoxCup = new System.Windows.Forms.PictureBox();
             this.picboxCalendar = new System.Windows.Forms.PictureBox();
             this.btnSettings = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.btnSchedule = new System.Windows.Forms.Button();
             this.btnTournament = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
@@ -54,7 +53,6 @@
             this.panelSideMenu.Controls.Add(this.picBoxCup);
             this.panelSideMenu.Controls.Add(this.picboxCalendar);
             this.panelSideMenu.Controls.Add(this.btnSettings);
-            this.panelSideMenu.Controls.Add(this.button3);
             this.panelSideMenu.Controls.Add(this.btnSchedule);
             this.panelSideMenu.Controls.Add(this.btnTournament);
             this.panelSideMenu.Controls.Add(this.panelLogo);
@@ -69,7 +67,7 @@
             this.picBoxSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(54)))), ((int)(((byte)(245)))));
             this.picBoxSettings.BackgroundImage = global::DuelSys.Properties.Resources.settings;
             this.picBoxSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.picBoxSettings.Location = new System.Drawing.Point(27, 315);
+            this.picBoxSettings.Location = new System.Drawing.Point(12, 315);
             this.picBoxSettings.Name = "picBoxSettings";
             this.picBoxSettings.Size = new System.Drawing.Size(56, 45);
             this.picBoxSettings.TabIndex = 7;
@@ -81,7 +79,7 @@
             this.picBoxCup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(54)))), ((int)(((byte)(245)))));
             this.picBoxCup.BackgroundImage = global::DuelSys.Properties.Resources.trophy;
             this.picBoxCup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.picBoxCup.Location = new System.Drawing.Point(27, 141);
+            this.picBoxCup.Location = new System.Drawing.Point(12, 199);
             this.picBoxCup.Name = "picBoxCup";
             this.picBoxCup.Size = new System.Drawing.Size(56, 46);
             this.picBoxCup.TabIndex = 6;
@@ -93,7 +91,7 @@
             this.picboxCalendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(54)))), ((int)(((byte)(245)))));
             this.picboxCalendar.BackgroundImage = global::DuelSys.Properties.Resources.calendar1;
             this.picboxCalendar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.picboxCalendar.Location = new System.Drawing.Point(27, 199);
+            this.picboxCalendar.Location = new System.Drawing.Point(12, 257);
             this.picboxCalendar.Name = "picboxCalendar";
             this.picboxCalendar.Size = new System.Drawing.Size(56, 46);
             this.picboxCalendar.TabIndex = 5;
@@ -115,21 +113,6 @@
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(54)))), ((int)(((byte)(245)))));
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(0, 251);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(259, 58);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Menu 3";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // btnSchedule
             // 
             this.btnSchedule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(54)))), ((int)(((byte)(245)))));
@@ -137,7 +120,7 @@
             this.btnSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSchedule.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSchedule.ForeColor = System.Drawing.Color.White;
-            this.btnSchedule.Location = new System.Drawing.Point(0, 193);
+            this.btnSchedule.Location = new System.Drawing.Point(0, 251);
             this.btnSchedule.Name = "btnSchedule";
             this.btnSchedule.Size = new System.Drawing.Size(259, 58);
             this.btnSchedule.TabIndex = 2;
@@ -152,7 +135,7 @@
             this.btnTournament.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnTournament.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnTournament.ForeColor = System.Drawing.Color.White;
-            this.btnTournament.Location = new System.Drawing.Point(0, 135);
+            this.btnTournament.Location = new System.Drawing.Point(0, 193);
             this.btnTournament.Name = "btnTournament";
             this.btnTournament.Size = new System.Drawing.Size(259, 58);
             this.btnTournament.TabIndex = 1;
@@ -166,7 +149,7 @@
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(259, 135);
+            this.panelLogo.Size = new System.Drawing.Size(259, 193);
             this.panelLogo.TabIndex = 0;
             // 
             // pbLogo
@@ -176,7 +159,7 @@
             this.pbLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbLogo.Location = new System.Drawing.Point(0, 0);
             this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(259, 135);
+            this.pbLogo.Size = new System.Drawing.Size(259, 190);
             this.pbLogo.TabIndex = 0;
             this.pbLogo.TabStop = false;
             // 
@@ -200,7 +183,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Main";
+            this.Text = "DuelSys";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Menu_FormClosing);
             this.panelSideMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxSettings)).EndInit();
@@ -219,7 +202,6 @@
         private PictureBox pbLogo;
         private Button btnTournament;
         private Button btnSettings;
-        private Button button3;
         private Button btnSchedule;
         private PictureBox picboxCalendar;
         private PictureBox picBoxCup;

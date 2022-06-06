@@ -15,7 +15,6 @@
                 <div class="event-date">
                     <div class="date">@tournament.Time.Start.ToString("dd")</div>
                     <div class="month">@tournament.Time.Start.ToString("MMM")</div>
-                    <input class="input-none" value="@tournament.Id" asp-for="TournamentId" />
                 </div>
             </div>
 
@@ -26,6 +25,8 @@
             </div>
 
             <div class="event-end">
+                <input class="input-none" value="@tournament.Id" asp-for="TournamentId" />
+                @*this should go to the logic layer (make a bool method)*@
                 @if (tournament.Time.Start < DateTime.Now.AddDays(7))
                 {
                     <button class="expired">Expired</button>

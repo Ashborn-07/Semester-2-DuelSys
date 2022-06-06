@@ -23,5 +23,9 @@ namespace LogicLayer
         public abstract int CountOfPlayers(int tournamentId);
 
         public abstract List<User> ListOfUsers(int tournamentId);
+
+        public abstract void UpdateTournament(Tournament tournament);
+
+        public abstract void DeleteTournament(int tournamentId);
     }
 }
