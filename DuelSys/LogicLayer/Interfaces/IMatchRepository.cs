@@ -13,5 +13,7 @@ namespace LogicLayer
         public abstract void WriteMatchesIntoDataBase(List<Match> matches);
          
         public abstract List<Match> GetMatches(Tournament tournament);
+
+        public abstract void UpdateScoreOfMatch(Match match);
     }
 }

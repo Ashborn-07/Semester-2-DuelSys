@@ -172,6 +172,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TournamentInformation";
             this.Text = "TournamentInformation";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TournamentInformation_FormClosing);
             this.Load += new System.EventHandler(this.TournamentInformation_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

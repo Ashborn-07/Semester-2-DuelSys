@@ -27,5 +27,9 @@ namespace LogicLayer
         public abstract void UpdateTournament(Tournament tournament);
 
         public abstract void DeleteTournament(int tournamentId);
+
+        public abstract bool CheckTournamentStateIfStarted(Tournament tournament);
+
+        public abstract Tournament GetTournamentById(int id);
     }
 }

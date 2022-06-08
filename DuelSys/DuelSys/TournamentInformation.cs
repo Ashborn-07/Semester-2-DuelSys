@@ -17,8 +17,9 @@ namespace DuelSys
     {
         private TournamentService service;
         private Tournament tournament;
+        private TournamentForm tournamentForm;
 
-        public TournamentInformation(Tournament tournament)
+        public TournamentInformation(Tournament tournament, TournamentForm tournamentForm)
         {
             InitializeComponent();
 
@@ -27,6 +28,7 @@ namespace DuelSys
             service = new TournamentService(tournamentRepository);
 
             this.tournament = tournament;
+            this.tournamentForm = tournamentForm;
         }
 
         private void TournamentInformation_Load(object sender, EventArgs e)
@@ -60,8 +62,13 @@ namespace DuelSys
 
         private void btnDeleteTournament_Click(object sender, EventArgs e)
         {
-            ConfirmationForm confirmationForm = new ConfirmationForm(tournament, service);
+            ConfirmationForm confirmationForm = new ConfirmationForm(tournament, service, this);
             confirmationForm.ShowDialog();
+        }
+
+        private void TournamentInformation_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            tournamentForm.LoadTournaments();
         }
     }
 }

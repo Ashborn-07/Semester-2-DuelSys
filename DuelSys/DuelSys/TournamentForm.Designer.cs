@@ -34,6 +34,10 @@
             // 
             // flPanelTournament
             // 
+            this.flPanelTournament.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flPanelTournament.AutoScroll = true;
             this.flPanelTournament.Location = new System.Drawing.Point(22, 12);
             this.flPanelTournament.Name = "flPanelTournament";
             this.flPanelTournament.Size = new System.Drawing.Size(772, 469);
@@ -41,6 +45,7 @@
             // 
             // btnCreateTournament
             // 
+            this.btnCreateTournament.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCreateTournament.BackColor = System.Drawing.Color.Transparent;
             this.btnCreateTournament.EnteredColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.btnCreateTournament.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -58,7 +63,7 @@
             // 
             // TournamentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(81)))));
             this.ClientSize = new System.Drawing.Size(806, 588);

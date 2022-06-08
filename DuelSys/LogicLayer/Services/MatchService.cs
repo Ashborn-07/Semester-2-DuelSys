@@ -21,10 +21,12 @@ namespace LogicLayer
             try
             {
                 players = repository.GetTournamentPlayers(tournament.Id);
-            } catch (ConnectionException ex)
+            }
+            catch (ConnectionException ex)
             {
                 throw new ConnectionException("Can't connect to database check Cisco.");
-            } catch (Exception)
+            }
+            catch (Exception)
             {
                 throw new MatchesException("Error in getting players for the tournament.");
             }
@@ -37,10 +39,12 @@ namespace LogicLayer
                 try
                 {
                     repository.WriteMatchesIntoDataBase(matches);
-                } catch (ConnectionException ex)
+                }
+                catch (ConnectionException ex)
                 {
                     throw new ConnectionException("Can't connect to database check Cisco.");
-                } catch (Exception)
+                }
+                catch (Exception)
                 {
                     throw new MatchesException("Error in writing into database.");
                 }
@@ -99,6 +103,35 @@ namespace LogicLayer
             }
 
             return matches;
+        }
+
+        public void UpdateScore(Match match, IUserRepository userRepository)
+        {
+            Match updatedMatch = match.Tournament.Sport.MatchResultValidation(match);
+
+            repository.UpdateScoreOfMatch(updatedMatch);
+
+            User player1 = updatedMatch.Player1;
+            User player2 = updatedMatch.Player2;
+            bool valid = false;
+
+            if (updatedMatch.Winner == updatedMatch.Player1.Id)
+            {
+                player1.WinRate = new WinRate(player1.WinRate.Wins + 1, player1.WinRate.Loses);
+                player2.WinRate = new WinRate(player2.WinRate.Wins, player2.WinRate.Loses + 1);
+                valid = true;
+            }
+            else if (updatedMatch.Winner == updatedMatch.Player2.Id)
+            {
+                player1.WinRate = new WinRate(player1.WinRate.Wins, player1.WinRate.Loses + 1);
+                player2.WinRate = new WinRate(player2.WinRate.Wins + 1, player2.WinRate.Loses);
+                valid = true;
+            }
+
+            if (valid)
+            { 
+                userRepository.UpdateUsersWinrate(new List<User> { player1, player2 });
+            }
         }
     }
 }

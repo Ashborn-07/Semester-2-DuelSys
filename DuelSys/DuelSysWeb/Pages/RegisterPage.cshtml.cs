@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using AspNetCoreHero.ToastNotification.Abstractions;
+
 
 namespace DuelSysWeb.Pages
 {
@@ -15,10 +17,12 @@ namespace DuelSysWeb.Pages
         public string GenderProp { get; set; } = "UNSPECIFIED";
         private UserService service;
         private IConfiguration Configuration;
+        private readonly IToastifyService toastify;
 
-        public RegisterPageModel(IConfiguration _configuration)
+        public RegisterPageModel(IConfiguration _configuration, IToastifyService toastify)
         {
             Configuration = _configuration;
+            this.toastify = toastify;
         }
 
         public void OnGet()
@@ -38,10 +42,17 @@ namespace DuelSysWeb.Pages
                 {
                     service.RegisterUser(registeredUser);
                 }
-                catch (Exception ex)
+                catch (ConnectionException ex)
                 {
-                    //show alert
-                    //Response.WriteAsJsonAsync();
+                    toastify.Error(ex.Message);
+                    return Page();
+                } catch (UserException ex)
+                {
+                    toastify.Warning(ex.Message);
+                    return Page();
+                } catch(Exception ex)
+                {
+                    toastify.Error(ex.Message);
                     return Page();
                 }
 

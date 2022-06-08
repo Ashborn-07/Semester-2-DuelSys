@@ -50,7 +50,7 @@ namespace DuelSys
             {
                 foreach (var tournament in tournaments)
                 {
-                    flPanelTournament.Controls.Add(new UserControlTournament(tournament));
+                    flPanelTournament.Controls.Add(new UserControlTournament(tournament, this));
                 }
             }
         }

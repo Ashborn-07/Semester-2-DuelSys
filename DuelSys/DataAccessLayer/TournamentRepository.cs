@@ -263,6 +263,7 @@ namespace DataAccessLayer
             Cmd.Parameters.AddWithValue("@name", tournament.Name);
             Cmd.Parameters.AddWithValue("@description", tournament.Description);
             Cmd.Parameters.AddWithValue("@location", tournament.Location);
+            Cmd.Parameters.AddWithValue("@id", tournament.Id);
             
             Cmd.ExecuteNonQuery();
         }
@@ -275,6 +276,89 @@ namespace DataAccessLayer
             Cmd = new MySqlCommand(sql, Con);
             Cmd.Parameters.AddWithValue("@id", tournamentId);
             Cmd.ExecuteNonQuery();
+        }
+
+        public bool CheckTournamentStateIfStarted(Tournament tournament)
+        {
+            bool started = false;
+
+            Connect();
+
+            string sql = "SELECT * FROM synth_tournament AS t INNER JOIN synth_matchup AS m ON m.tournament_id = t.id WHERE t.id = @id";
+            Cmd = new MySqlCommand(sql, Con);
+            Cmd.Parameters.AddWithValue("id", tournament.Id);
+
+            try
+            {
+                Reader = Cmd.ExecuteReader();
+
+                if (Reader.HasRows)
+                {
+                    started = true;
+                }
+            } finally
+            {
+                Disconnect();
+            }
+
+            return started;
+        }
+
+        public Tournament GetTournamentById(int id)
+        {
+            Tournament tournament = null;
+
+            Connect();
+
+            string sql = "SELECT * FROM synth_tournament AS t INNER JOIN synth_sport AS s ON t.`sport` = s.`id` WHERE t.id = @id";
+            Cmd = new MySqlCommand(sql, Con);
+            Cmd.Parameters.AddWithValue("@id", id);
+
+            try
+            {
+                Reader = Cmd.ExecuteReader();
+
+                if (Reader.Read())
+                {
+                    string name = Reader.GetString(1);
+                    string description = Reader.GetString(2);
+                    string location = Reader.GetString(3);
+                    int sport_id = Reader.GetInt32(4);
+                    DateTime start = Reader.GetDateTime(5);
+                    DateTime end = Reader.GetDateTime(6);
+                    string type = Reader.GetString(7);
+                    int minPlayers = Reader.GetInt32(8);
+                    int maxPlayers = Reader.GetInt32(9);
+                    string sport_name = Reader.GetString(11);
+
+                    Sport sport = null;
+
+                    switch (sport_name)
+                    {
+                        case "Basketball":
+                            sport = new Basketball(sport_id, sport_name);
+                            break;
+                        case "Football":
+                            sport = new Football(sport_id, sport_name);
+                            break;
+                        case "Badminton":
+                            sport = new Badminton(sport_id, sport_name);
+                            break;
+                        case "League Of Legends Esport":
+                            sport = new LeagueOfLegends(sport_id, sport_name);
+                            break;
+                    }
+
+                    TournamentTime tournamentTime = new TournamentTime(start, end);
+
+                    tournament = new Tournament(id, name, description, location, sport, tournamentTime, type, maxPlayers, minPlayers);
+                }
+            } finally
+            {
+                Disconnect();
+            }
+
+            return tournament;
         }
     }
 }

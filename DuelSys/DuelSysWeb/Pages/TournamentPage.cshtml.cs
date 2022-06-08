@@ -1,26 +1,33 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using LogicLayer;
 using DataAccessLayer;
+using AspNetCoreHero.ToastNotification.Abstractions;
 
 namespace DuelSysWeb.Pages
 {
+    [Authorize]
     public class TournamentPageModel : PageModel
     {
         public DateTime OldYear;
-        private TournamentService service;
+        public TournamentService service;
         public List<Tournament> tournaments;
         private IConfiguration configuration;
+        private readonly IToastifyService toastify;
 
         [BindProperty]
         public string buttonType { get; set; }
         
-        [BindProperty]
-        public int TournamentId { get; set; }
+        [BindProperty(SupportsGet =true)]
+        public int TournamentId { get; 
+            set; }
 
-        public TournamentPageModel(IConfiguration configuration)
+        public TournamentPageModel(IConfiguration configuration, IToastifyService toastify)
         {
             this.configuration = configuration;
+            this.toastify = toastify;
         }
 
         public void OnGet()
@@ -28,11 +35,18 @@ namespace DuelSysWeb.Pages
             ITournamentRepository repository = new TournamentRepository(configuration.GetConnectionString("MyConn"));
             service = new TournamentService(repository);
 
-            tournaments = service.GetTournaments();
+            try
+            {
+                tournaments = service.GetTournaments();
+            } catch (Exception ex)
+            {
+                toastify.Error(ex.Message);
+            }
         }
 
         public IActionResult OnPost()
         {
+            var tour = TournamentId;
             ITournamentRepository repository = new TournamentRepository(configuration.GetConnectionString("MyConn"));
             service = new TournamentService(repository);
 
@@ -44,17 +58,23 @@ namespace DuelSysWeb.Pages
                 switch (buttonType)
                 {
                     case "participate":
-                        service.RegisterPlayer(TournamentId, Convert.ToInt32(id));
+                        service.RegisterPlayer(tour, Convert.ToInt32(id));
                         break;
                     case "cancel":
-                        service.CancelRegistrationTournament(TournamentId, Convert.ToInt32(id));
+                        service.CancelRegistrationTournament(tour, Convert.ToInt32(id));
                         break;
                     default:
                         break;
                 }
-            } catch (Exception)
+            } catch (MatchesException ex)
             {
-
+                toastify.Warning(ex.Message);
+            } catch (ConnectionException ex)
+            {
+                toastify.Error(ex.Message);
+            } catch (Exception ex)
+            {
+                toastify.Information(ex.Message);
             }
 
             return RedirectToPage("TournamentPage");

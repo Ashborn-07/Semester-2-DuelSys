@@ -2,49 +2,57 @@
 @model DuelSysWeb.Pages.TournamentPageModel
 @{
 }
-<form method="post" class="event-container">
+<div class="event-container">
     @foreach (var tournament in Model.tournaments)
     {
-        if (Model.OldYear.Year != tournament.Time.Start.Year)
+        @if (Model.OldYear.Year != tournament.Time.Start.Year)
         {
             <h3 class="year">@tournament.Time.Start.Year</h3>
         }
+        <form method="post" class="event-container">
 
-        <div class="event">
-            <div class="event-left">
-                <div class="event-date">
-                    <div class="date">@tournament.Time.Start.ToString("dd")</div>
-                    <div class="month">@tournament.Time.Start.ToString("MMM")</div>
+            <div class="event">
+                <div class="event-left">
+                    <div class="event-date">
+                        <div class="date">@tournament.Time.Start.ToString("dd")</div>
+                        <div class="month">@tournament.Time.Start.ToString("MMM")</div>
+                    </div>
+                </div>
+
+                <div class="event-right">
+                    <h3 class="event-title">@tournament.Name</h3>
+
+                    <div class="event-description">@tournament.Description</div>
+                </div>
+
+                <div class="event-end">
+                    @*this should go to the logic layer (make a bool method)*@
+                    @if (Model.service.GetTournamentStatus(tournament).Equals("started"))
+                    {
+                        <button class="started">Started</button>
+                    }
+                    else if (Model.service.GetTournamentStatus(tournament).Equals("expired"))
+                    {
+                        <button class="expired">Expired</button>
+                    }
+                    else if (!Model.AlreadyRegistered(tournament.Id))
+                    {
+                        <button class="participate" type="submit">Participate</button>
+                        @*<a asp-page="TournamentPage" asp-route-id="@tournament.Id" class="participate"></a>*@
+                        <input class="input-none" value="participate" asp-for="buttonType" />
+                        <input class="input-none" value="@tournament.Id" asp-for="TournamentId" />
+                    }
+                    else if (Model.AlreadyRegistered(tournament.Id))
+                    {
+                        <button class="cancel" type="submit">Cancel</button>
+                        <input class="input-none" value="cancel" asp-for="buttonType" />
+                        <input class="input-none" value="@tournament.Id" asp-for="TournamentId" />
+                    }
                 </div>
             </div>
 
-            <div class="event-right">
-                <h3 class="event-title">@tournament.Name</h3>
-
-                <div class="event-description">@tournament.Description</div>
-            </div>
-
-            <div class="event-end">
-                <input class="input-none" value="@tournament.Id" asp-for="TournamentId" />
-                @*this should go to the logic layer (make a bool method)*@
-                @if (tournament.Time.Start < DateTime.Now.AddDays(7))
-                {
-                    <button class="expired">Expired</button>
-                    <input class="input-none" value="expired" asp-for="buttonType" />
-                } else if (!Model.AlreadyRegistered(tournament.Id))
-                {
-                    <button class="participate" type="submit">Participate</button>
-                    <input class="input-none" value="participate" asp-for="buttonType" />
-                    
-                } else if (Model.AlreadyRegistered(tournament.Id))
-                {
-                    <button class="cancel" type="submit">Cancel</button>
-                    <input class="input-none" value="cancel" asp-for="buttonType" />
-                }
-            </div>
-        </div>
-
+        </form>
         Model.OldYear = tournament.Time.Start;
     }
-</form>
+</div>
 

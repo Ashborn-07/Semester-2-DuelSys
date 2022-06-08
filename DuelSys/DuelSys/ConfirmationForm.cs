@@ -17,17 +17,19 @@ namespace DuelSys
         private bool valid = false;
         private Tournament tournament;
         private TournamentService service;
+        private TournamentInformation tournamentInformation;
 
-        public ConfirmationForm(Tournament tournament, TournamentService service)
+        public ConfirmationForm(Tournament tournament, TournamentService service, TournamentInformation tournamentInformation)
         {
             InitializeComponent();
             this.tournament = tournament;
             this.service = service;
+            this.tournamentInformation = tournamentInformation;
         }
 
-        private void ConfirmationForm_Load(object sender, EventArgs e)
+        private void btnConfirm_Click(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(tbConfirmation.Text))
+            if (String.IsNullOrEmpty(tbConfirmation.Text))
             {
                 MessageBox.Show("Input field is empty!");
             }
@@ -44,6 +46,8 @@ namespace DuelSys
             {
                 service.DeleteTournament(tournament.Id);
             }
+
+            this.Close();
         }
     }
 }

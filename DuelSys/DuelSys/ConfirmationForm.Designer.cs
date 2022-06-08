@@ -40,7 +40,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(348, 21);
+            this.label1.Size = new System.Drawing.Size(437, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "Are you sure you want to delete this tournament.";
             // 
@@ -50,7 +50,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(50, 30);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(255, 21);
+            this.label2.Size = new System.Drawing.Size(317, 28);
             this.label2.TabIndex = 1;
             this.label2.Text = "If yes please fill in the field \'DELETE\'";
             // 
@@ -66,7 +66,7 @@
             this.tbConfirmation.Multiline = false;
             this.tbConfirmation.Name = "tbConfirmation";
             this.tbConfirmation.ReadOnly = false;
-            this.tbConfirmation.Size = new System.Drawing.Size(318, 43);
+            this.tbConfirmation.Size = new System.Drawing.Size(318, 48);
             this.tbConfirmation.TabIndex = 27;
             this.tbConfirmation.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
             this.tbConfirmation.UseSystemPasswordChar = false;
@@ -86,10 +86,11 @@
             this.btnConfirm.TabIndex = 31;
             this.btnConfirm.Text = "Confirm";
             this.btnConfirm.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // ConfirmationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(81)))));
             this.ClientSize = new System.Drawing.Size(367, 175);
@@ -98,10 +99,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ConfirmationForm";
             this.Text = "ConfirmationForm";
-            this.Load += new System.EventHandler(this.ConfirmationForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

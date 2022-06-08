@@ -50,5 +50,16 @@ namespace LogicLayer
             this.player2 = player2;
             this.scores = scores;
         }
+
+        public Match(int id, Tournament tournament, DateTime date, User player1, User player2, int[] scores, int winner)
+        {
+            this.id = id;
+            this.tournament = tournament;
+            this.date = date;
+            this.player1 = player1;
+            this.player2 = player2;
+            this.scores = scores;
+            this.winner = winner;
+        }
     }
 }

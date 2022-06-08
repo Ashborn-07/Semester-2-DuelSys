@@ -16,6 +16,16 @@ namespace LogicLayer
             this.repository = repository;
         }
 
+        public Tournament GetTournamentById(int id)
+        {
+            if (id != 0)
+            {
+                return repository.GetTournamentById(id);
+            }
+
+            throw new TournamentException("No tournament was found with this id");
+        }
+
         public List<string> GetListOfSports()
         {
             try
@@ -46,6 +56,35 @@ namespace LogicLayer
             return tournaments.OrderBy(x => x.Time.Start).ToList();
         }
 
+        public List<Tournament> GetAllStartedTournaments()
+        {
+            List<Tournament> tournaments;
+            List<Tournament> startedTournaments = new List<Tournament>();
+
+            try
+            {
+                tournaments = repository.ListOfTournaments();
+            } catch (ConnectionException ex)
+            {
+                throw new ConnectionException(ex.Message);
+            }
+
+            foreach (var tournament in tournaments)
+            {
+                if (repository.CheckTournamentStateIfStarted(tournament))
+                {
+                    startedTournaments.Add(tournament);
+                }
+            }
+
+            if (startedTournaments.Count > 0)
+            {
+                return startedTournaments;
+            }
+
+            throw new TournamentException("There are no started tournaments currently");
+        } 
+
         public void CreateTournament(Tournament tournament)
         {
             try
@@ -66,11 +105,14 @@ namespace LogicLayer
                 if (!repository.PlayerAlreadyRegistered(tournamentId, PlayerId))
                 {
                     repository.RegisterPlayer(tournamentId, PlayerId);
+                    return;
                 }
             } catch (ConnectionException ex)
             {
                 throw new ConnectionException(ex.Message);
             }
+
+            throw new MatchesException("Player already registered");
         }
 
         public bool PleyerAlreadyRegistered(int tournamentId, int PlayerId)
@@ -137,6 +179,76 @@ namespace LogicLayer
             {
                 throw new ConnectionException(ex.Message);
             }
+        }
+
+        public string GetTournamentStatus(Tournament tournament)
+        {
+            if (repository.CheckTournamentStateIfStarted(tournament))
+            {
+                return "started";
+            }
+
+            if (tournament.Time.Start < DateTime.Now.AddDays(7))
+            {
+                return "expired";
+            }
+
+            return "participate";
+        }
+
+        public List<User> GetLeaderBoardOfTournament(Tournament tournament, IMatchRepository matchRepository)
+        {
+            if (tournament == null)
+            {
+                throw new TournamentException("Error occured when recieving tournament");
+            }
+
+            List<Match> matches = matchRepository.GetMatches(tournament);
+            List<User> players = GetPlayersOfTournament(matches);
+
+            foreach (var match in matches)
+            {
+                foreach (var player in players)
+                {
+                    if (match.Winner == player.Id)
+                    {
+                        player.WinRate.Wins += 1;
+                    }
+                }
+            }
+
+            return players.OrderByDescending(x => x.WinRate.Wins).ThenBy(x => x.UserName).ToList();
+        }
+
+        private List<User> GetPlayersOfTournament(List<Match> matches)
+        {
+            List<User> players = new List<User>();
+
+            foreach (var match in matches)
+            {
+                int index = players.FindIndex(item => item.Id == match.Player1.Id);
+                if (index == -1)
+                {
+                    User newPlayer = match.Player1;
+                    newPlayer.WinRate = new WinRate(0, 0);
+                    players.Add(newPlayer);
+                }
+
+                int index1 = players.FindIndex(item => item.Id == match.Player2.Id);
+                if (index1 == -1)
+                {
+                    User newPlayer = match.Player2;
+                    newPlayer.WinRate = new WinRate(0, 0);
+                    players.Add(match.Player2);
+                }
+            }
+
+            if (players.Count > 0)
+            {
+                return players;
+            }
+
+            throw new TournamentException("Error in retrieving players for leaderboard");
         }
     }
 }

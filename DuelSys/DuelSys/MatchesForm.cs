@@ -18,6 +18,7 @@ namespace DuelSys
         private MatchService matchService;
         private TournamentService tournamentService;
         private Tournament tournament;
+        List<Match> matches = new List<Match>();
         bool valid = true;
 
         public MatchesForm(Tournament tournament, TournamentService tournamentService)
@@ -60,9 +61,12 @@ namespace DuelSys
             DisplayMatches();
         }
 
-        private void DisplayMatches()
+        public void DisplayMatches()
         {
-            List<Match> matches = new List<Match>();
+            dgvMatches.Rows.Clear();
+
+            matches = new List<Match>();
+
             try
             {
                 matches = matchService.GetMatches(tournament);
@@ -74,7 +78,7 @@ namespace DuelSys
             }
             catch (MatchesException ex)
             {
-                Alert(ex.Message, enmType.Warning);
+                Alert(ex.Message, enmType.Info);
                 valid = false;
             }
 
@@ -88,15 +92,62 @@ namespace DuelSys
                 dgvMatches.Columns[4].Name = "Player 2 Score";
                 dgvMatches.Columns[5].Name = "Date";
 
+                int i = 0;
+
                 foreach (var match in matches)
                 {
                     string[] row = new string[] { $"{match.Id}", $"{match.Player1.UserName}", $"{match.Player2.UserName}", $"{match.Scores[0]}", $"{match.Scores[1]}", $"{match.Date.ToString("d")}" };
                     dgvMatches.Rows.Add(row);
+
+                    if (match.Winner != 0)
+                    {
+                        if (match.Winner == match.Player1.Id)
+                        {
+                            dgvMatches.Rows[i].Cells[1].Style.BackColor = Color.Green;
+                            dgvMatches.Rows[i].Cells[2].Style.BackColor = Color.Red;
+                        }
+                        if (match.Winner == match.Player2.Id)
+                        {
+                            dgvMatches.Rows[i].Cells[1].Style.BackColor = Color.Red;
+                            dgvMatches.Rows[i].Cells[2].Style.BackColor = Color.Green;
+                        }
+                    }
+
+                    i++;
                 }
 
                 btnCreateSchedule.Enabled = false;
                 btnCreateSchedule.Visible = false;
             }
+        }
+
+        private void btnUpdateScore_Click(object sender, EventArgs e)
+        {
+            Match match = GetSelectedMatch();
+
+            if (match == null)
+            {
+                Alert("Select a match!", enmType.Warning);
+                return;
+            }
+
+            ScoreForm scoreForm = new ScoreForm(match, matchService, this);
+            scoreForm.ShowDialog();
+        }
+
+        private Match GetSelectedMatch()
+        {
+            int matchId = Convert.ToInt32(dgvMatches.SelectedRows[0].Cells[0].Value);
+
+            foreach (var match in matches)
+            {
+                if (match.Id == matchId)
+                {
+                    return match;
+                }
+            }
+
+            return null;
         }
     }
 }

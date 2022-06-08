@@ -31,8 +31,14 @@ namespace LogicLayer
 
         public void RegisterUser(User user)
         {
-            User newUser = new User(user.UserName, BCrypt.Net.BCrypt.HashPassword(user.Password), user.FirstName, user.LastName, user.Age, user.Gender, user.Email, user.WinRate);
-            repository.RegisterUser(newUser);
+            if (!repository.UsernameTaken(user.UserName))
+            {
+                User newUser = new User(user.UserName, BCrypt.Net.BCrypt.HashPassword(user.Password), user.FirstName, user.LastName, user.Age, user.Gender, user.Email, user.WinRate);
+                repository.RegisterUser(newUser);
+                return;
+            }
+
+            throw new UserException("Username is taken");
         }
     }
 }

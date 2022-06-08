@@ -27,8 +27,8 @@ body {
 }
 
     body.dark {
-        --body-color: #18191A;
-        --nav-color: #242526;
+        --body-color: #0f1519;
+        --nav-color: #111;
         --side-nav: #242526;
         --text-color: #CCC;
         --search-bar: #242526;
@@ -72,7 +72,8 @@ nav .nav-bar {
     nav .nav-bar .logo a {
         font-size: 25px;
         font-weight: 500;
-        color: var(--text-color);
+        /*color: var(--text-color);*/
+        color: #00c8c8;
         text-decoration: none;
     }
 
@@ -108,7 +109,7 @@ nav .nav-bar {
         height: 6px;
         width: 6px;
         border-radius: 50%;
-        background-color: var(--text-color);
+        background-color: rgba(0, 200, 200);
         opacity: 0;
         transition: all 0.3s ease;
     }
@@ -320,7 +321,7 @@ body.dark .search-field i {
             height: 3px;
             width: 30px;
             border-radius: 5px;
-            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+            background: linear-gradient(135deg, #00c8c8, #000);
         }
 
 .content form .user-details {
@@ -364,7 +365,7 @@ form .input-box span.error-span {
 
     .user-details .input-box input:focus,
     .user-details .input-box input:valid {
-        border-color: #9b59b6;
+        border-color: #00c8c8;
     }
 
 form .gender-details .gender-title {
@@ -399,7 +400,7 @@ form .category {
 #dot-1:checked ~ .category label .one,
 #dot-2:checked ~ .category label .two,
 #dot-3:checked ~ .category label .three {
-    background: #9b59b6;
+    background: #006464;
     border-color: #d9d9d9;
 }
 
@@ -423,12 +424,12 @@ form .button {
         letter-spacing: 1px;
         cursor: pointer;
         transition: all 0.3s ease;
-        background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        background: linear-gradient(135deg, #00c8c8, #000);
     }
 
         form .button input:hover {
             /* transform: scale(0.99); */
-            background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+            background: linear-gradient(-135deg, #000, #00c8c8);
         }
 
 @media(max-width: 584px) {
@@ -484,7 +485,7 @@ form .button {
         color: #fff;
         user-select: none;
         border-radius: 15px 15px 0 0;
-        background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        background: linear-gradient(135deg, #00c8c8, #000);
     }
 
     .wrapper form {
@@ -511,7 +512,7 @@ form .button {
 
                 .wrapper form .field input:focus,
                 form .field input:valid {
-                    border-color: #4158d0;
+                    border-color: #006464;
                 }
 
             .wrapper form .field label {
@@ -530,7 +531,7 @@ form .field input:focus ~ label,
 form .field input:valid ~ label {
     top: 0%;
     font-size: 16px;
-    color: #4158d0;
+    color: #00c8c8;
     background: #fff;
     transform: translateY(-50%);
 }
@@ -574,13 +575,13 @@ form .field input[type="submit"] {
     font-size: 20px;
     font-weight: 500;
     cursor: pointer;
-    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    background: linear-gradient(135deg, #00c8c8, #000);
     transition: all 0.3s ease;
 }
 
     form .field input[type="submit"]:hover {
         transform: scale(0.95);
-        background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+        background: linear-gradient(-135deg, #000, #00c8c8);
     }
 
 form .signup-link {
@@ -591,7 +592,7 @@ form .signup-link {
 
     form .pass-link a,
     form .signup-link a {
-        color: #4158d0;
+        color: #00c8c8;
         text-decoration: none;
     }
 
@@ -607,125 +608,6 @@ form .signup-link {
     }
 }
 
-/*Schedule page*/
-
-.Event {
-    animation: fadein .8s;
-    position: relative;
-    margin-top: 100px;
-}
-
-.EventDate {
-    display: inline-block;
-}
-
-    .EventDate .date {
-        margin: 0 34px;
-        padding: 48px 0 15px 0;
-        font-size: 1.8rem;
-        font-weight: normal;
-    }
-
-        .EventDate .date .weekday {
-            font-weight: bold;
-        }
-
-        .EventDate .date .dash {
-            padding: 0 4px;
-        }
-
-.EventMatch .event.future {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    position: relative;
-    width: calc(((100% - 442px) / 12) * 12 + 374px);
-    height: 100px;
-    margin: 0 34px;
-}
-
-    .EventMatch .event.future:before {
-        position: absolute;
-        top: -1px;
-        left: calc(((100% - 442px) / 12) * 2 + 68px);
-        right: 0;
-        height: 1px;
-        content: '';
-        display: block;
-        background: #252c32;
-    }
-
-.EventTime {
-    display: inline-block;
-    flex: 0 0 110px;
-}
-
-.EventMatch .teams {
-    display: flex;
-    justify-content: center;
-    flex-grow: 1;
-    text-align: center;
-    position: relative;
-}
-
-    .EventMatch .teams .team1 {
-        text-align: right;
-        justify-content: flex-start;
-        flex-direction: row-reverse;
-    }
-
-        .EventMatch .teams .team1 .team-info {
-            padding-right: 12px;
-        }
-
-.EventMatch .versus {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 88px;
-    color: #8fa3b0;
-    font-size: 1.4rem;
-    letter-spacing: .1rem;
-    font-weight: bold;
-}
-
-.EventMatch .teams .team2 {
-    text-align: left;
-    justify-content: flex-start;
-}
-
-    .EventMatch .teams .team2 .team-info {
-        padding-left: 12px;
-    }
-
-.EventMatch .league {
-    flex: 0 0 110px;
-    color: #8fa3b0;
-    font-size: 1.4rem;
-    letter-spacing: .1rem;
-    font-weight: bold;
-    text-align: right;
-}
-
-    .EventMatch .league .name {
-        text-transform: uppercase;
-    }
-
-    .EventMatch .league .strategy {
-        text-transform: uppercase;
-    }
-
-.EventMatch .event.future:after {
-    position: absolute;
-    bottom: 0;
-    left: calc(((100% - 442px) / 12) * 2 + 68px);
-    right: 0;
-    height: 1px;
-    content: '';
-    display: block;
-    background: #252c32;
-}
-
 /*Tournament page*/
 .event-container {
     font-family: "Roboto", sans-serif;
@@ -738,6 +620,7 @@ form .signup-link {
         font-size: 40px;
         text-align: center;
         border-bottom: 1px solid #b1b1b1;
+        color: white;
     }
 
     .event-container .event {
@@ -779,6 +662,8 @@ form .signup-link {
     justify-content: center;
     padding: 0 24px;
     min-width: 500px;
+    color: #8fa3b0;
+    background-color: #0a0e13;
 }
 
     .event .event-right h3.event-title {
@@ -810,6 +695,7 @@ form .signup-link {
     flex-direction: column;
     justify-content: center;
     padding: 0 24px;
+    background-color: #0a0e13;
 }
 
     .event .event-end .participate {
@@ -831,7 +717,29 @@ form .signup-link {
         }
 
     .event .event-end .expired {
+        height: 30%;
+        width: 115%;
+        border-radius: 5px;
+        border: none;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: 1px;
         pointer-events: none;
+        background-color: grey;
+    }
+
+    .event .event-end .started {
+        height: 30%;
+        width: 115%;
+        border-radius: 5px;
+        border: none;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        pointer-events: none;
+        background-color: #4158d0;
     }
 
     .event .event-end .cancel {
@@ -872,3 +780,691 @@ form .signup-link {
                 padding: 10px 0;
             }
 }
+
+/*Schedule page*/
+.Schedule {
+    animation: fadein .8s;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    background-color: #0f1519;
+    color: white;
+}
+
+    .Schedule .events, .Schedule .loading {
+        width: calc(((100% - 442px) / 12) * 9 + 340px);
+        margin-bottom: 60px;
+    }
+
+    .Schedule .sidebar {
+        border-left: 1px solid #252c32;
+        position: relative;
+        z-index: 1;
+    }
+
+.Event {
+    animation: fadein .8s;
+    position: relative;
+}
+
+.EventDate {
+    display: inline-block;
+    margin-top: 50px;
+}
+
+    .EventDate .date {
+        margin: 0 34px;
+        padding: 48px 0 15px 0;
+        font-size: 1.8rem;
+        font-weight: normal;
+    }
+
+        .EventDate .date .weekday {
+            font-weight: bold;
+        }
+
+        .EventDate .date .dash {
+            padding: 0 4px;
+        }
+
+.EventMatch .event.future, .EventMatch .event.past {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    width: calc(((100% - 442px) / 12) * 12 + 374px);
+    height: 100px;
+    margin: 0 34px;
+}
+
+    .EventMatch .event.future:before, .EventMatch .event.past:before {
+        position: absolute;
+        top: -1px;
+        left: calc(((100% - 442px) / 12) * 2 + 68px);
+        right: 0;
+        height: 1px px;
+        content: '';
+        display: block;
+        background: #252c32;
+    }
+
+.EventTime {
+    display: inline-block;
+    flex: 0 0 110px;
+}
+
+    .EventTime .time {
+        position: relative;
+        font-size: 4rem;
+        line-height: 1em;
+        opacity: 0;
+        font-weight: bold;
+        transition: opacity .25s ease-out;
+    }
+
+        .EventTime .time .minute, .EventTime .time .ampm {
+            position: relative;
+            padding-left: 4px;
+            top: -18px;
+            color: #8fa3b0;
+            font-size: 1.4rem;
+            letter-spacing: .1rem;
+            font-weight: bold;
+            color: #fff;
+            line-height: 0;
+        }
+
+.EventMatch .teams {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    text-align: center;
+    position: relative;
+}
+
+    .EventMatch .teams .team1 {
+        text-align: right;
+        justify-content: flex-start;
+        flex-direction: row-reverse;
+    }
+
+        .EventMatch .teams .team1 .team-info {
+            padding-right: 12px;
+        }
+
+    .EventMatch .teams.winner-team1 .team1 h2 {
+        color: #c79e57;
+    }
+
+    .EventMatch .teams .winloss {
+        color: #8fa3b0;
+        color: #8fa3b0;
+        font-size: 1.4rem;
+        letter-spacing: .1rem;
+        font-weight: bold;
+    }
+
+    .EventMatch .teams .team2 {
+        text-align: left;
+        justify-content: flex-start;
+    }
+
+        .EventMatch .teams .team2 .team-info {
+            padding-left: 12px;
+        }
+
+    .EventMatch .teams.winner-team1 .team2 h2 {
+        color: #8fa3b0;
+        transition: color .25s ease-out;
+    }
+
+    .EventMatch .teams.winner-team2 .team2 h2 {
+        color: #c79e57;
+    }
+
+    .EventMatch .teams.winner-team2 .team1 h2 {
+        color: #8fa3b0;
+        transition: color .25s ease-out;
+    }
+
+.EventMatch .score, .EventMatch .versus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 88px;
+    color: #8fa3b0;
+    font-size: 1.4rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+}
+
+    .EventMatch .score .scoreTeam1, .EventMatch .versus .scoreTeam1 {
+        position: relative;
+    }
+
+        .EventMatch .score .scoreTeam1:before, .EventMatch .versus .scoreTeam1:before {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: -20px;
+            color: #b19955;
+            width: 24px;
+            font-size: 9px;
+            padding: 0 6px;
+            content: '\25C0';
+            font-family: 'Segoe UI Symbol';
+        }
+
+    .EventMatch .score .scoreTeam2, .EventMatch .versus .scoreTeam2 {
+        position: relative;
+    }
+
+        .EventMatch .score .scoreTeam2:after, .EventMatch .versus .scoreTeam2:after {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: -20px;
+            color: #b19955;
+            width: 24px;
+            font-size: 9px;
+            padding: 0 6px;
+            content: '\25B6';
+            font-family: 'Segoe UI Symbol';
+        }
+
+.EventMatch .league {
+    flex: 0 0 110px;
+    color: #8fa3b0;
+    font-size: 1.4rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    text-align: right;
+}
+
+.EventMatch .event.future:before, .EventMatch .event.past:before {
+    position: absolute;
+    bottom: 0;
+    left: calc(((100% - 442px) / 12) * 2 + 68px);
+    right: 0;
+    height: 1px;
+    content: '';
+    display: block;
+    background: #252c32;
+}
+
+.EventMatch .event.future:after, .EventMatch .event.past:after {
+    position: absolute;
+    bottom: 0;
+    left: calc(((100% - 442px) / 12) * 2 + 68px);
+    right: 0;
+    height: 1px;
+    content: '';
+    display: block;
+    background: #252c32;
+}
+
+.sidebar {
+    width: calc(((100% - 442px) / 12) * 3 + 102px);
+    min-height: 100vh;
+    min-width: 360px;
+    background: #0a0e13;
+}
+
+.EventFilter {
+    animation: fadein .8s;
+    width: 100%;
+}
+
+    .EventFilter .header {
+        display: block;
+        position: relative;
+        width: 100%;
+        z-index: 1;
+        border-bottom: 1px solid #252c32;
+    }
+
+        .EventFilter .header .filter {
+            color: #8fa3b0;
+            font-size: 1.4rem;
+            letter-spacing: .1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: absolute;
+            left: 30px;
+            bottom: 12px;
+        }
+
+    .EventFilter .leagues {
+        padding: 0 0 80px 0;
+        margin: 0;
+        overflow-y: auto;
+    }
+
+        .EventFilter .leagues .league {
+            position: relative;
+            cursor: pointer;
+            list-style: none;
+            border-bottom: 1px solid #252c32;
+            color: #8fa3b0;
+            transition: background .25s ease-out;
+            width: 100%;
+        }
+
+            .EventFilter .leagues .league .info {
+                display: flex;
+                align-items: center;
+            }
+
+                .EventFilter .leagues .league .info .label {
+                    padding-top: 2px;
+                }
+
+            .EventFilter .leagues .league.selected .info .label .name {
+                color: #fff;
+            }
+
+            .EventFilter .leagues .league .info .label .name {
+                font-size: 1.8rem;
+                font-weight: normal;
+                color: #8fa3b0;
+            }
+
+            .EventFilter .leagues .league .info .label .region {
+                text-transform: uppercase;
+                color: #8fa3b0;
+                font-size: 1.4rem;
+                letter-spacing: .1rem;
+                font-weight: bold;
+            }
+
+            .EventFilter .leagues .league:after {
+                display: block;
+                position: absolute;
+                top: 0;
+                width: 4px;
+                height: 100%;
+                content: '';
+                z-index: 100;
+                background: transparent;
+                transition: background .25s ease-out;
+            }
+
+            .EventFilter .leagues .league.selected:after, .EventFilter .leagues .league.selected:hover:after {
+                background: #00c8c8;
+            }
+
+.button {
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    letter-spacing: inherit;
+    line-height: normal;
+    text-align: inherit;
+    text-transform: inherit;
+    font: inherit;
+    border: none;
+}
+
+@media (min-width: 1076px) {
+    .EventFilter {
+        position: fixed;
+        top: 80px;
+        height: calc(100vh - 80px);
+    }
+
+        .EventFilter .header {
+            height: 75px;
+        }
+
+        .EventFilter .leagues {
+            height: calc(100% - 75px);
+        }
+
+            .EventFilter .leagues .league .info {
+                padding: 12px 0;
+            }
+
+        .EventFilter .header .save {
+            display: none;
+        }
+
+        .EventFilter .leagues .league .info .label1 {
+            margin-left: 15px;
+        }
+}
+
+@media (min-width: 721px) and (pointer: fine) {
+    .EventMatch .event.future.past:hover, .EventMatch .event.past.past:hover, .EventMatch .event.single.future.event:hover {
+        width: 100%;
+        margin: 0;
+        padding: 0 34px;
+        background-color: #0a0e13;
+        transition: background-color .1s ease-out;
+    }
+}
+
+/* Index page for displaying started tournaments */
+
+.recentNews {
+    
+}
+
+    .recentNews .news-title {
+        text-align: center;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        font-family: 'nimbus-sans-condensed', sans-serif;
+        font-size: 55px;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .recentNews .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 30px;
+    }
+
+    .recentNews .ct-blog {
+        margin-bottom: 30px;
+    }
+
+    .container-news {
+        padding: 20px;
+        margin-top: 30px;
+    }
+
+.ct-blog .inner {
+    background-color: #FFF;
+    padding: 10px;
+    transition: all 0.2s ease-in-out 0s;
+    cursor: pointer;
+    height: 100%;
+}
+
+    .ct-blog .inner:hover {
+        background-color: #e6e6e6;
+    }
+
+.ct-blog .fauxcrop {
+    height: 260px;
+    overflow: hidden;
+}
+
+    .ct-blog .fauxcrop img {
+        width: 100%;
+        height: auto;
+    }
+
+.ct-blog-content {
+    display: table;
+    padding: 30px 0 28px;
+}
+
+    .ct-blog-content .ct-blog-date {
+        border-right: 1px solid #95A5A6;
+        display: table-cell;
+        font-family: "Lato", sans-serif;
+        padding: 0px 18px 0px 15px;
+        text-align: center;
+    }
+
+        .ct-blog-content .ct-blog-date span {
+            font-size: 16px;
+            color: rgb(20, 117, 175);
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+        }
+
+        .ct-blog-content .ct-blog-date strong {
+            font-size: 25px;
+            color: rgb(20, 117, 175);
+        }
+
+    .ct-blog-content .ct-blog-header {
+        color: #000;
+        /*display: table-cell;*/
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: -0.2px;
+        line-height: 1.1;
+        padding: 0 20px;
+        vertical-align: top;
+    }
+
+.btn-news {
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+    .btn-news.btn-contests a {
+        color: #fff;
+        font-family: 'nimbus-sans-condensed', sans-serif;
+        font-size: 24px;
+        transition: all 0.2s ease-in-out 0s;
+    }
+
+        .btn-news.btn-contests a:hover {
+            color: #000;
+        }
+
+
+/* LeaderBoard css */
+.leaderboard {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    height: 608px;
+    background: linear-gradient(to bottom, #3a404d, #181c26);
+    border-radius: 10px;
+    box-shadow: 0 7px 30px rgba(62, 9, 11, .3);
+}
+
+    .leaderboard h1 {
+        font-size: 18px;
+        color: #e1e1e1;
+        padding: 12px 13px 18px;
+    }
+
+        .leaderboard h1 svg {
+            width: 25px;
+            height: 26px;
+            position: relative;
+            top: 3px;
+            margin-right: 6px;
+            vertical-align: baseline;
+        }
+
+    .leaderboard ol {
+        counter-reset: leaderboard;
+        padding-left: 0px;
+    }
+
+        .leaderboard ol li {
+            position: relative;
+            z-index: 1;
+            font-size: 14px;
+            counter-increment: leaderboard;
+            padding: 18px 10px 18px 50px;
+            cursor: pointer;
+            backface-visibility: hidden;
+            transform: translateZ(0) scale(1, 1);
+        }
+
+            .leaderboard ol li::before {
+                content: counter(leaderboard);
+                position: absolute;
+                z-index: 2;
+                top: 15px;
+                left: 15px;
+                width: 20px;
+                height: 20px;
+                line-height: 20px;
+                color: #c24448;
+                background: #fff;
+                border-radius: 20px;
+                text-align: center;
+            }
+
+            .leaderboard ol li mark {
+                position: absolute;
+                z-index: 2;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                padding: 18px 10px 18px 50px;
+                margin: 0;
+                background: none;
+                color: #fff;
+            }
+
+                .leaderboard ol li mark::before, .leaderboard ol li mark::after {
+                    content: '';
+                    position: absolute;
+                    z-index: 1;
+                    bottom: -11px;
+                    left: -9px;
+                    border-top: 10px solid #c24448;
+                    border-left: 10px solid transparent;
+                    transition: all 0.1s ease-in-out;
+                    opacity: 0;
+                }
+
+                .leaderboard ol li mark::after {
+                    left: auto;
+                    right: -9px;
+                    border-left: none;
+                    border-right: 10px solid transparent;
+                }
+
+            .leaderboard ol li small {
+                position: relative;
+                z-index: 2;
+                display: block;
+                text-align: right;
+                color: white;
+                font-size: 20px;
+            }
+
+            .leaderboard ol li::after {
+                content: '';
+                position: absolute;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: #fa6855;
+                box-shadow: 0 3px 0 rgba(0, 0, 0, .08);
+                transition: all 0.3s ease-in-out;
+                opacity: 0;
+            }
+
+            .leaderboard ol li:nth-child(1) {
+                background: #fa6855;
+            }
+
+                .leaderboard ol li:nth-child(1)::after {
+                    background: #fa6855;
+                }
+
+            .leaderboard ol li:nth-child(2) {
+                background: #e0574f;
+            }
+
+                .leaderboard ol li:nth-child(2)::after {
+                    background: #e0574f;
+                    box-shadow: 0 2px 0 rgba(0, 0, 0, .08);
+                }
+
+                .leaderboard ol li:nth-child(2) mark::before, .leaderboard ol li:nth-child(2) mark::after {
+                    border-top: 6px solid #ba4741;
+                    bottom: -7px;
+                }
+
+            .leaderboard ol li:nth-child(3) {
+                background: #d7514d;
+            }
+
+                .leaderboard ol li:nth-child(3)::after {
+                    background: #d7514d;
+                    box-shadow: 0 1px 0 rgba(0, 0, 0, .11);
+                }
+
+                .leaderboard ol li:nth-child(3) mark::before, .leaderboard ol li:nth-child(3) mark::after {
+                    border-top: 2px solid #b0433f;
+                    bottom: -3px;
+                }
+
+            .leaderboard ol li:nth-child(4) {
+                background: #cd4b4b;
+            }
+
+                .leaderboard ol li:nth-child(4)::after {
+                    background: #cd4b4b;
+                    box-shadow: 0 -1px 0 rgba(0, 0, 0, .15);
+                }
+
+                .leaderboard ol li:nth-child(4) mark::before, .leaderboard ol li:nth-child(4) mark::after {
+                    top: -7px;
+                    bottom: auto;
+                    border-top: none;
+                    border-bottom: 6px solid #a63d3d;
+                }
+
+            .leaderboard ol li:nth-child(5) {
+                background: #c24448;
+                border-radius: 0 0 10px 10px;
+            }
+
+                .leaderboard ol li:nth-child(5)::after {
+                    background: #c24448;
+                    box-shadow: 0 -2.5px 0 rgba(0, 0, 0, .12);
+                    border-radius: 0 0 10px 10px;
+                }
+
+                .leaderboard ol li:nth-child(5) mark::before, .leaderboard ol li:nth-child(5) mark::after {
+                    top: -9px;
+                    bottom: auto;
+                    border-top: none;
+                    border-bottom: 8px solid #993639;
+                }
+
+            .leaderboard ol li:hover {
+                z-index: 2;
+                overflow: visible;
+            }
+
+                .leaderboard ol li:hover::after {
+                    opacity: 1;
+                    transform: scaleX(1.06) scaleY(1.03);
+                }
+
+                .leaderboard ol li:hover mark::before, .leaderboard ol li:hover mark::after {
+                    opacity: 1;
+                    transition: all 0.35s ease-in-out;
+                }
+
+.the-most {
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    width: 50vw;
+    max-width: 200px;
+    padding: 10px;
+}
+
+    .the-most img {
+        max-width: 100%;
+    }
+ 

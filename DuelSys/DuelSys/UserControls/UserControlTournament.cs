@@ -17,14 +17,17 @@ namespace DuelSys
     {
         private Tournament tournament;
         private TournamentService service;
+        private TournamentForm tournamentForm;
 
-        public UserControlTournament(Tournament tournament)
+        public UserControlTournament(Tournament tournament, TournamentForm tournamentForm)
         {
             InitializeComponent();
             this.tournament = tournament;
 
             ITournamentRepository repository = new TournamentRepository(ConfigurationManager.ConnectionStrings["phpma"].ToString());
             service = new TournamentService(repository);
+
+            this.tournamentForm = tournamentForm;
         }
 
         private void UserControlTournament_Load(object sender, EventArgs e)
@@ -50,7 +53,7 @@ namespace DuelSys
 
         private void UserControlTournament_DoubleClick(object sender, EventArgs e)
         {
-            TournamentInformation information = new TournamentInformation(tournament);
+            TournamentInformation information = new TournamentInformation(tournament, tournamentForm);
             information.ShowDialog();
         }
 

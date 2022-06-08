@@ -25,22 +25,52 @@ namespace LogicLayer
 
             if (player1Score >= 21 || player2Score >= 21)
             {
-                if (player1Score == 30 && player2Score <= 29)
+                if (player1Score >= 21 && player2Score >= 21)
                 {
-                    match.Winner = match.Player1.Id;
-                } else if (player2Score == 30 && player1Score <= 29)
+                    if (player1Score == 30 && player2Score == 30)
+                    {
+                        throw new ScoreExceptions("System does not handle ties.");
+                    }
+                    
+                    if (player1Score == 30 && player2Score < 30 && player2Score >= 28)
+                    {
+                        match.Winner = match.Player1.Id;
+                        valid = true;
+                    }
+
+                    if (player2Score == 30 && player1Score < 30 && player1Score >= 28)
+                    {
+                        match.Winner = match.Player2.Id;
+                        valid = true;
+                    }
+
+                    if (player1Score - player2Score == 2)
+                    {
+                        match.Winner = match.Player1.Id;
+                        valid = true;
+                    }
+
+                    if (player2Score - player1Score == 2)
+                    {
+                        match.Winner = match.Player2.Id;
+                        valid = true;
+                    }
+                } else
                 {
-                    match.Winner = match.Player2.Id;
-                }
-                else if (player1Score - player2Score >= 2)
-                {
-                    match.Winner = match.Player1.Id;
-                    valid = true;
-                }
-                else if (player2Score - player1Score >= 2)
-                {
-                    match.Winner = match.Player2.Id;
-                    valid = true;
+                    if (player1Score == 21 || player2Score == 21)
+                    {
+                        if (player1Score - player2Score >= 2)
+                        {
+                            match.Winner = match.Player1.Id;
+                            valid = true;
+                        }
+
+                        if (player2Score - player1Score >= 2)
+                        {
+                            match.Winner = match.Player2.Id;
+                            valid = true;
+                        }
+                    }
                 }
             }
 
@@ -49,7 +79,7 @@ namespace LogicLayer
                 return match;
             }
 
-            throw new ScoreExceptions("Neither player has won this game, please check the scores.");
+            throw new ScoreExceptions("Invalid scores please read the rules.");
         }
     }
 }

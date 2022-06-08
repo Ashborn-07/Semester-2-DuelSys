@@ -114,5 +114,53 @@ namespace DataAccessLayer
 
             return user;
         }
+
+        public void UpdateUsersWinrate(List<User> players)
+        {
+            Connect();
+
+            string sql = "UPDATE synth_user SET wins = @wins, loses = @loses WHERE id = @id";
+
+            try
+            {
+                foreach (var player in players)
+                {
+                    Cmd = new MySqlCommand(sql, Con);
+                    Cmd.Parameters.AddWithValue("@wins", player.WinRate.Wins);
+                    Cmd.Parameters.AddWithValue("@loses", player.WinRate.Loses);
+                    Cmd.Parameters.AddWithValue("@id", player.Id);
+                    Cmd.ExecuteNonQuery();
+                }
+            } finally
+            {
+                Disconnect();
+            }
+        }
+
+        public bool UsernameTaken(string username)
+        {
+            bool taken = false;
+
+            Connect();
+
+            string sql = "SELECT * FROM synth_user WHERE username = @username";
+            Cmd = new MySqlCommand(sql, Con);
+            Cmd.Parameters.AddWithValue("@username", username);
+
+            try
+            {
+                Reader = Cmd.ExecuteReader();
+
+                if (Reader.HasRows)
+                {
+                    taken = true;
+                }
+            } finally
+            {
+                Disconnect();
+            }
+
+            return taken;
+        }
     }
 }
