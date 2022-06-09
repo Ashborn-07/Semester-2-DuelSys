@@ -59,7 +59,7 @@
             this.panelSideMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSideMenu.Location = new System.Drawing.Point(0, 0);
             this.panelSideMenu.Name = "panelSideMenu";
-            this.panelSideMenu.Size = new System.Drawing.Size(259, 594);
+            this.panelSideMenu.Size = new System.Drawing.Size(259, 618);
             this.panelSideMenu.TabIndex = 0;
             // 
             // picBoxSettings
@@ -168,7 +168,7 @@
             this.panelForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelForm.Location = new System.Drawing.Point(259, 0);
             this.panelForm.Name = "panelForm";
-            this.panelForm.Size = new System.Drawing.Size(822, 594);
+            this.panelForm.Size = new System.Drawing.Size(880, 618);
             this.panelForm.TabIndex = 1;
             // 
             // Menu
@@ -176,7 +176,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(81)))));
-            this.ClientSize = new System.Drawing.Size(1081, 594);
+            this.ClientSize = new System.Drawing.Size(1139, 618);
             this.Controls.Add(this.panelForm);
             this.Controls.Add(this.panelSideMenu);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);

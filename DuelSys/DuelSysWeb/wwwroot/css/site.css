@@ -290,6 +290,10 @@ body.dark .search-field i {
         padding-top: 30px;
     }
 
+    .nav-bar .nav-links .logout {
+        padding-top: 30px;
+    }
+
     .nav-links li a {
         display: block;
         margin-top: 20px;
@@ -1254,6 +1258,27 @@ form .signup-link {
             color: #000;
         }
 
+@media(max-width: 459px) {
+
+    .ct-blog .fauxcrop  {
+        height: 60%;
+        overflow: hidden;
+    }
+
+    .ct-blog-content {
+        display: table;
+        padding: 30px 0 28px;
+        padding-top: 0px;
+    }
+
+    .recentNews .ct-blog {
+        height: 400px;
+    }
+
+    .ct-blog-header {
+        font-size: 18px;
+    }
+}
 
 /* LeaderBoard css */
 .leaderboard {
@@ -1467,4 +1492,12 @@ form .signup-link {
     .the-most img {
         max-width: 100%;
     }
+
+@media(max-width: 459px) {
+    .leaderboard {
+        width: 360px;
+        height: 708px;
+        top: 55%;
+    }
+}
  

@@ -44,18 +44,19 @@ namespace DuelSysWeb.Pages
                 }
                 catch (ConnectionException ex)
                 {
-                    toastify.Error(ex.Message);
+                    toastify.Error(ex.Message, 3);
                     return Page();
                 } catch (UserException ex)
                 {
-                    toastify.Warning(ex.Message);
+                    toastify.Warning(ex.Message, 3);
                     return Page();
                 } catch(Exception ex)
                 {
-                    toastify.Error(ex.Message);
+                    toastify.Error(ex.Message, 3);
                     return Page();
                 }
 
+                toastify.Success("Registered successfully", 3);
                 return RedirectToPage("LogInPage");
             }
 

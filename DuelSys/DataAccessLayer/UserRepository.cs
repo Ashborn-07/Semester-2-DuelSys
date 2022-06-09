@@ -162,5 +162,31 @@ namespace DataAccessLayer
 
             return taken;
         }
+
+        public bool EmailAlreadyRegistered(string email)
+        {
+            bool taken = false;
+
+            Connect();
+
+            string sql = "SELECT * FROM synth_user WHERE email = @email";
+            Cmd = new MySqlCommand(sql, Con);
+            Cmd.Parameters.AddWithValue("@email", email);
+
+            try
+            {
+                Reader = Cmd.ExecuteReader();
+
+                if (Reader.HasRows)
+                {
+                    taken = true;
+                }
+            } finally
+            {
+                Disconnect();
+            }
+
+            return taken;
+        }
     }
 }

@@ -20,7 +20,12 @@ namespace LogicLayer
         {
             if (id != 0)
             {
-                return repository.GetTournamentById(id);
+                Tournament tournament = repository.GetTournamentById(id);
+
+                if (tournament != null)
+                {
+                    return tournament;
+                }
             }
 
             throw new TournamentException("No tournament was found with this id");
@@ -87,15 +92,17 @@ namespace LogicLayer
 
         public void CreateTournament(Tournament tournament)
         {
-            try
+            if (CreateTournamentDataValidation(tournament))
             {
-                repository.CreateTournament(tournament);
+                try
+                {
+                    repository.CreateTournament(tournament);
+                }
+                catch (ConnectionException ex)
+                {
+                    throw new ConnectionException(ex.Message);
+                }
             }
-            catch (ConnectionException ex)
-            {
-                throw new ConnectionException(ex.Message);
-            }
-
         }
 
         public void RegisterPlayer(int tournamentId, int PlayerId)
@@ -161,12 +168,16 @@ namespace LogicLayer
 
         public void UpdateTournament(Tournament tournament)
         {
-            try
+            if (UpdateTournamentDataValidation(tournament))
             {
-                repository.UpdateTournament(tournament);
-            } catch (ConnectionException ex)
-            {
-                throw new ConnectionException(ex.Message);
+                try
+                {
+                    repository.UpdateTournament(tournament);
+                }
+                catch (ConnectionException ex)
+                {
+                    throw new ConnectionException(ex.Message);
+                }
             }
         }
 
@@ -196,59 +207,39 @@ namespace LogicLayer
             return "participate";
         }
 
-        public List<User> GetLeaderBoardOfTournament(Tournament tournament, IMatchRepository matchRepository)
+        private bool CreateTournamentDataValidation(Tournament tournament)
         {
-            if (tournament == null)
+            if (tournament.Name.Length <= 40 && tournament.Location.Length <= 60)
             {
-                throw new TournamentException("Error occured when recieving tournament");
-            }
-
-            List<Match> matches = matchRepository.GetMatches(tournament);
-            List<User> players = GetPlayersOfTournament(matches);
-
-            foreach (var match in matches)
-            {
-                foreach (var player in players)
+                if (tournament.Time.Start <= tournament.Time.End)
                 {
-                    if (match.Winner == player.Id)
+                    if (tournament.Max_players >= tournament.Min_players)
                     {
-                        player.WinRate.Wins += 1;
+                        return true;
                     }
+
+                    throw new TournamentException("Invalid max and min players");
                 }
+
+                throw new TournamentException("Invalid start and end dates");
             }
 
-            return players.OrderByDescending(x => x.WinRate.Wins).ThenBy(x => x.UserName).ToList();
+            throw new TournamentException("Tornament name/location are too long");
         }
 
-        private List<User> GetPlayersOfTournament(List<Match> matches)
+        private bool UpdateTournamentDataValidation(Tournament tournament)
         {
-            List<User> players = new List<User>();
-
-            foreach (var match in matches)
+            if (tournament.Name.Length <= 40)
             {
-                int index = players.FindIndex(item => item.Id == match.Player1.Id);
-                if (index == -1)
+                if (tournament.Location.Length <= 60)
                 {
-                    User newPlayer = match.Player1;
-                    newPlayer.WinRate = new WinRate(0, 0);
-                    players.Add(newPlayer);
+                    return true;
                 }
 
-                int index1 = players.FindIndex(item => item.Id == match.Player2.Id);
-                if (index1 == -1)
-                {
-                    User newPlayer = match.Player2;
-                    newPlayer.WinRate = new WinRate(0, 0);
-                    players.Add(match.Player2);
-                }
+                throw new TournamentException("Location is too long");
             }
 
-            if (players.Count > 0)
-            {
-                return players;
-            }
-
-            throw new TournamentException("Error in retrieving players for leaderboard");
+            throw new TournamentException("Name is too long");
         }
     }
 }

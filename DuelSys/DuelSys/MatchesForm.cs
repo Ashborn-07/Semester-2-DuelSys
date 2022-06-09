@@ -52,10 +52,12 @@ namespace DuelSys
             catch (ConnectionException ex)
             {
                 Alert(ex.Message, enmType.Error);
+                return;
             }
             catch (MatchesException ex)
             {
                 Alert(ex.Message, enmType.Warning);
+                return;
             }
 
             DisplayMatches();

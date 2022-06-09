@@ -17,5 +17,7 @@ namespace LogicLayer
         public abstract void UpdateUsersWinrate(List<User> players);
 
         public abstract bool UsernameTaken(string username);
+
+        public abstract bool EmailAlreadyRegistered(string email);
     }
 }

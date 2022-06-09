@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using LogicLayer;
 using DataAccessLayer;
 using System.Security.Claims;
+using AspNetCoreHero.ToastNotification.Abstractions;
 
 namespace DuelSysWeb.Pages
 {
@@ -14,10 +15,12 @@ namespace DuelSysWeb.Pages
         [BindProperty]
         public LogInModel logInModel { get; set; }
         private IConfiguration Configuration;
+        private IToastifyService toastify;
 
-        public LogInPageModel(IConfiguration _configuration)
+        public LogInPageModel(IConfiguration _configuration, IToastifyService toastify)
         {
             Configuration = _configuration;
+            this.toastify = toastify;
         }
 
         public void OnGet()
@@ -39,8 +42,13 @@ namespace DuelSysWeb.Pages
                 try
                 {
                     user = service.CheckUserCredentials(logInModel.Username, logInModel.Password);
-                } catch(Exception)
+                } catch(UserException ex)
                 {
+                    toastify.Error(ex.Message, 3);
+                    return Page();
+                } catch (Exception ex)
+                {
+                    toastify.Error(ex.Message, 3);
                     return Page();
                 }
 
@@ -52,6 +60,7 @@ namespace DuelSysWeb.Pages
 
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     HttpContext.SignInAsync(new ClaimsPrincipal(claimsIdentity));
+                    toastify.Success("Logged in successfully", 3);
                     return RedirectToPage("Index");
                 }
             }

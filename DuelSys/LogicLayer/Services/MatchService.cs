@@ -22,7 +22,7 @@ namespace LogicLayer
             {
                 players = repository.GetTournamentPlayers(tournament.Id);
             }
-            catch (ConnectionException ex)
+            catch (ConnectionException)
             {
                 throw new ConnectionException("Can't connect to database check Cisco.");
             }
@@ -40,7 +40,7 @@ namespace LogicLayer
                 {
                     repository.WriteMatchesIntoDataBase(matches);
                 }
-                catch (ConnectionException ex)
+                catch (ConnectionException)
                 {
                     throw new ConnectionException("Can't connect to database check Cisco.");
                 }
@@ -58,7 +58,7 @@ namespace LogicLayer
 
             if (players.Count < 2 || players == null)
             {
-                throw new MatchesException("Tournament is cancelled, not enough players to start the tournament.");
+                throw new MatchesException("Not enough players");
             }
 
             User lastPlayer = players[players.Count - 1];
@@ -132,6 +132,61 @@ namespace LogicLayer
             { 
                 userRepository.UpdateUsersWinrate(new List<User> { player1, player2 });
             }
+        }
+
+        public List<User> GetLeaderBoardOfTournament(Tournament tournament)
+        {
+            if (tournament == null)
+            {
+                throw new TournamentException("Error occured when recieving tournament");
+            }
+
+            List<Match> matches = repository.GetMatches(tournament);
+            List<User> players = GetPlayersOfTournament(matches);
+
+            foreach (var match in matches)
+            {
+                foreach (var player in players)
+                {
+                    if (match.Winner == player.Id)
+                    {
+                        player.WinRate.Wins += 1;
+                    }
+                }
+            }
+
+            return players.OrderByDescending(x => x.WinRate.Wins).ThenBy(x => x.UserName).ToList();
+        }
+
+        private List<User> GetPlayersOfTournament(List<Match> matches)
+        {
+            List<User> players = new List<User>();
+
+            foreach (var match in matches)
+            {
+                int index = players.FindIndex(item => item.Id == match.Player1.Id);
+                if (index == -1)
+                {
+                    User newPlayer = match.Player1;
+                    newPlayer.WinRate = new WinRate(0, 0);
+                    players.Add(newPlayer);
+                }
+
+                int index1 = players.FindIndex(item => item.Id == match.Player2.Id);
+                if (index1 == -1)
+                {
+                    User newPlayer = match.Player2;
+                    newPlayer.WinRate = new WinRate(0, 0);
+                    players.Add(match.Player2);
+                }
+            }
+
+            if (players.Count > 0)
+            {
+                return players;
+            }
+
+            throw new TournamentException("Error in retrieving players for leaderboard");
         }
     }
 }

@@ -58,6 +58,9 @@ namespace DuelSys
             {
                 Alert(ex.Message, enmType.Error);
             }
+
+            Alert("Tournament updated", enmType.Success);
+            this.Close();
         }
 
         private void btnDeleteTournament_Click(object sender, EventArgs e)

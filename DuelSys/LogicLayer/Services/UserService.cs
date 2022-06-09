@@ -26,19 +26,25 @@ namespace LogicLayer
                     return user;
                 }
             }
-            return null;
+
+            throw new UserException("Incorrect username or password!");
         }
 
         public void RegisterUser(User user)
         {
             if (!repository.UsernameTaken(user.UserName))
             {
-                User newUser = new User(user.UserName, BCrypt.Net.BCrypt.HashPassword(user.Password), user.FirstName, user.LastName, user.Age, user.Gender, user.Email, user.WinRate);
-                repository.RegisterUser(newUser);
-                return;
+                if (!repository.EmailAlreadyRegistered(user.Email))
+                {
+                    User newUser = new User(user.UserName, BCrypt.Net.BCrypt.HashPassword(user.Password), user.FirstName, user.LastName, user.Age, user.Gender, user.Email, user.WinRate);
+                    repository.RegisterUser(newUser);
+                    return;
+                }
+
+                throw new UserException("This email is already registered!");
             }
 
-            throw new UserException("Username is taken");
+            throw new UserException("Username is already taken.");
         }
     }
 }

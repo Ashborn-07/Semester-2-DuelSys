@@ -33,7 +33,7 @@ namespace LogicLayer
 
                 if (player2score - player1score >= 1)
                 {
-                    match.Winner = match.Player1.Id;
+                    match.Winner = match.Player2.Id;
                     valid = true;
                 }
             }

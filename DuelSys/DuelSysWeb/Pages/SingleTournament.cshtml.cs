@@ -8,7 +8,8 @@ namespace DuelSysWeb.Pages
 {
     public class SingleTournamentModel : PageModel
     {
-        private TournamentService service;
+        private TournamentService tournamentService;
+        private MatchService matchService;
         public Tournament tournament;
         public List<User> players;
         private IConfiguration configuration;
@@ -22,12 +23,14 @@ namespace DuelSysWeb.Pages
 
         public void OnGet(int id)
         {
-            ITournamentRepository repository = new TournamentRepository(configuration.GetConnectionString("MyConn"));
-            service = new TournamentService(repository);
+            ITournamentRepository tournamentRepository = new TournamentRepository(configuration.GetConnectionString("MyConn"));
+            tournamentService = new TournamentService(tournamentRepository);
+            IMatchRepository matchRepository = new MatchRepository(configuration.GetConnectionString("MyConn"));
+            matchService = new MatchService(matchRepository);
 
             try
             {
-                tournament = service.GetTournamentById(id);
+                tournament = tournamentService.GetTournamentById(id);
             } catch (ConnectionException ex)
             {
                 toastify.Error(ex.Message);
@@ -38,7 +41,7 @@ namespace DuelSysWeb.Pages
 
             try
             {
-                players = service.GetLeaderBoardOfTournament(tournament, new MatchRepository(configuration.GetConnectionString("MyConn")));
+                players = matchService.GetLeaderBoardOfTournament(tournament);
             } catch (ConnectionException ex)
             {
                 toastify.Error(ex.Message);
