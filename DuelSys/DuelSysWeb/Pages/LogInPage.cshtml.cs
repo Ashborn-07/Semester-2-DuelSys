@@ -65,6 +65,9 @@ namespace DuelSysWeb.Pages
                 }
             }
 
+            toastify.Error("Username must be at least 5 characters long", 3);
+            toastify.Error("Password must be at least 6 characters long", 3);
+
             return Page();
         }
     }
