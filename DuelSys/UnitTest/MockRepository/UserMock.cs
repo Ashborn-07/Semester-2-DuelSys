@@ -25,7 +25,7 @@ namespace UnitTest
 
         public User CheckUserCredentials(string username, string password)
         {
-            return null;
+            throw new NotImplementedException();
         }
 
         public void RegisterUser(User user)
