@@ -13,12 +13,19 @@
 
 /* ===== Colours ===== */
 :root {
+    /*light mode colors
     --body-color: #E4E9F7;
     --nav-color: #4070F4;
     --side-nav: #010718;
     --text-color: #FFF;
     --search-bar: #F2F2F2;
-    --search-text: #010718;
+    --search-text: #010718;*/
+
+    --body-color: #0f1519;
+    --nav-color: #111;
+    --side-nav: #242526;
+    --text-color: #CCC;
+    --search-bar: #242526;
 }
 
 body {
