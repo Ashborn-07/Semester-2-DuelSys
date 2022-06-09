@@ -49,5 +49,17 @@ namespace DuelSys
 
             this.Close();
         }
+
+        private void ConfirmationForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Alert("Tournament deleted successfully", enmType.Success);
+            tournamentInformation.Close();
+        }
+
+        public void Alert(string msg, enmType type)
+        {
+            Notification frm = new Notification();
+            frm.showAlert(msg, type);
+        }
     }
 }

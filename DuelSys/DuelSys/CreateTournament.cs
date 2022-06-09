@@ -55,6 +55,12 @@ namespace DuelSys
                 return;
             }
 
+            if (cbSystem.SelectedIndex == -1)
+            {
+                Alert("You need to specify a tournament system", enmType.Warning);
+                return;
+            }
+
             DateTime start = dTimeStart.Value;
             DateTime end = dTimeEnd.Value;
 
