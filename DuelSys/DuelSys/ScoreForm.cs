@@ -26,6 +26,7 @@ namespace DuelSys
             this.match = match;
             this.matchService = matchService;
             this.form = form;
+            this.Text = $"Match № {match.Id}";
         }
 
         private void ScoreForm_Load(object sender, EventArgs e)

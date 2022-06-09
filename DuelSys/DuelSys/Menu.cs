@@ -31,23 +31,12 @@ namespace DuelSys
             picboxCalendar.BackColor = ColorTranslator.FromHtml("#007F97");
         }
 
-        private void btnSettings_Click(object sender, EventArgs e)
-        {
-            ColorRessetter();
-            panelForm.Controls.Clear();
-            //
-            btnSettings.BackColor = ColorTranslator.FromHtml("#007F97");
-            picBoxSettings.BackColor = ColorTranslator.FromHtml("#007F97");
-        }
-
         private void ColorRessetter()
         {
             btnTournament.BackColor = ColorTranslator.FromHtml("#6036F5");
             picBoxCup.BackColor = ColorTranslator.FromHtml("#6036F5");
             btnSchedule.BackColor = ColorTranslator.FromHtml("#6036F5");
             picboxCalendar.BackColor = ColorTranslator.FromHtml("#6036F5");
-            btnSettings.BackColor = ColorTranslator.FromHtml("#6036F5");
-            picBoxSettings.BackColor = ColorTranslator.FromHtml("#6036F5");
         }
 
         private void OpenChildForm(Form form)

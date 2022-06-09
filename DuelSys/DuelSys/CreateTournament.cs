@@ -66,9 +66,13 @@ namespace DuelSys
             {
                 service.CreateTournament(tournament);
             }
-            catch (Exception ex)
+            catch (ConnectionException ex)
             {
                 Alert(ex.Message, enmType.Error);
+                return;
+            } catch (TournamentException ex)
+            {
+                Alert(ex.Message, enmType.Warning);
                 return;
             }
 

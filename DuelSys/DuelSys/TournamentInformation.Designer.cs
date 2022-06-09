@@ -171,7 +171,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TournamentInformation";
-            this.Text = "TournamentInformation";
+            this.Text = "Tournament Information";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TournamentInformation_FormClosing);
             this.Load += new System.EventHandler(this.TournamentInformation_Load);
             this.ResumeLayout(false);

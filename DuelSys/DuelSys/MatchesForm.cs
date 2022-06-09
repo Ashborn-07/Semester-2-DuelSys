@@ -26,6 +26,7 @@ namespace DuelSys
             InitializeComponent();
             this.tournamentService = tournamentService;
             this.tournament = tournament;
+            this.Text = $"{tournament.Name} - {tournament.Sport.Name}";
 
             IMatchRepository matchRepository = new MatchRepository(ConfigurationManager.
                 ConnectionStrings["phpma"].ToString());

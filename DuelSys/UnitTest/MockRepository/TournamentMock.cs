@@ -36,7 +36,7 @@ namespace UnitTest
 
         public void RegisterPlayer(int tournamentId, int playerId)
         {
-            
+            throw new NotImplementedException();
         }
 
         public bool PlayerAlreadyRegistered(int tournamentId, int playerId)

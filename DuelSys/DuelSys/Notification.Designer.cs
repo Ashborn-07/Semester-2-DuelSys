@@ -51,7 +51,7 @@
             // 
             this.picBoxCancel.BackgroundImage = global::DuelSys.Properties.Resources.cancel;
             this.picBoxCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.picBoxCancel.Location = new System.Drawing.Point(314, 31);
+            this.picBoxCancel.Location = new System.Drawing.Point(387, 31);
             this.picBoxCancel.Name = "picBoxCancel";
             this.picBoxCancel.Size = new System.Drawing.Size(48, 27);
             this.picBoxCancel.TabIndex = 1;
@@ -77,7 +77,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
-            this.ClientSize = new System.Drawing.Size(374, 86);
+            this.ClientSize = new System.Drawing.Size(448, 86);
             this.Controls.Add(this.picBoxIcon);
             this.Controls.Add(this.picBoxCancel);
             this.Controls.Add(this.lblMsg);
