@@ -22,7 +22,7 @@ tournament.
 
 ## Major Requirements - Functional Requirements
 
-_**FR-07: Support multiple sport types**_
+_**FR-07: Support multiple sport types** _
 Extend the software solution to also support different sport types (e.g. basketball, tennis, 
 quidditch, league of legends, chess, etc.). It should be possible, for a staff member, to 
 specify which sport type when creating new tournament. Make sure that when registering 
