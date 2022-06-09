@@ -6,7 +6,7 @@ Vartan Dyulgeryan - i482834
 # Reference links
 
 - [GitLab CI Documentation](https://docs.gitlab.com/ee/ci/)
-- [.NET Hello World tutorial](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/)
+- [Website](https://i482834.luna.fhict.nl)
 
 If you're new to .NET you'll want to check out the tutorial, but if you're
 already a seasoned developer considering building your own .NET app with GitLab,
