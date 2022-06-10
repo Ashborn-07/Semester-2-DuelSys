@@ -61,6 +61,7 @@ namespace DuelSys
                 return;
             }
 
+            Alert("Successfully created schedule", enmType.Success);
             DisplayMatches();
         }
 

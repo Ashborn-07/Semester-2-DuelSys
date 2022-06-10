@@ -33,9 +33,10 @@
             // 
             // flPanelTournamentSchedule
             // 
+            this.flPanelTournamentSchedule.AutoScroll = true;
             this.flPanelTournamentSchedule.Location = new System.Drawing.Point(12, 12);
             this.flPanelTournamentSchedule.Name = "flPanelTournamentSchedule";
-            this.flPanelTournamentSchedule.Size = new System.Drawing.Size(772, 564);
+            this.flPanelTournamentSchedule.Size = new System.Drawing.Size(772, 469);
             this.flPanelTournamentSchedule.TabIndex = 1;
             // 
             // ScheduleForm

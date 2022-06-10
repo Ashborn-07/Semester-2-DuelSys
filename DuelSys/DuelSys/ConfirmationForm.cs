@@ -31,7 +31,8 @@ namespace DuelSys
         {
             if (String.IsNullOrEmpty(tbConfirmation.Text))
             {
-                MessageBox.Show("Input field is empty!");
+                Alert("Input fields is empty", enmType.Warning);
+                return;
             }
 
             if (tbConfirmation.Text.All(c => char.IsUpper(c)))
@@ -45,15 +46,20 @@ namespace DuelSys
             if (valid)
             {
                 service.DeleteTournament(tournament.Id);
+                this.Close();
+                return;
             }
 
-            this.Close();
+            Alert("Incorrect", enmType.Error);
         }
 
         private void ConfirmationForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Alert("Tournament deleted successfully", enmType.Success);
-            tournamentInformation.Close();
+            if (valid)
+            {
+                Alert("Tournament deleted successfully", enmType.Success);
+                tournamentInformation.Close();
+            }
         }
 
         public void Alert(string msg, enmType type)

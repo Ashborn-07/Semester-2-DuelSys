@@ -12,6 +12,7 @@ namespace DataAccessLayer
     {
         public UserRepository(string path) : base(path) { }
 
+        // not used. It was used as log in for desktop before
         public User CheckUserCredentials(string username, string password)
         {
             User user = null;

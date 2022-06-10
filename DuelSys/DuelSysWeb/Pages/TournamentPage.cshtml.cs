@@ -59,9 +59,11 @@ namespace DuelSysWeb.Pages
                 {
                     case "participate":
                         service.RegisterPlayer(tour, Convert.ToInt32(id));
+                        toastify.Success("Successfully registered for the tournament", 3);
                         break;
                     case "cancel":
                         service.CancelRegistrationTournament(tour, Convert.ToInt32(id));
+                        toastify.Success("Successfully canceled the registration for the tournament", 3);
                         break;
                     default:
                         break;

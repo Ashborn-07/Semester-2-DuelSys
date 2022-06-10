@@ -56,9 +56,9 @@ namespace LogicLayer
         {
             List<Match> matches = new List<Match>();
 
-            if (players.Count < 2 || players == null)
+            if (players.Count < tournament.Min_players || players == null)
             {
-                throw new MatchesException("Not enough players");
+                throw new MatchesException($"Not enough players. You need {tournament.Min_players}");
             }
 
             User lastPlayer = players[players.Count - 1];
