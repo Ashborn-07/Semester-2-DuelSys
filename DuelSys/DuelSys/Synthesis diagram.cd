@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DataAccessLayer.DataBaseHandler">
+    <Position X="3" Y="11" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="DataAccessLayer.MatchRepository">
+    <Position X="3" Y="8" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataAccessLayer.TournamentRepository">
+    <Position X="1" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataAccessLayer.UserRepository">
+    <Position X="5.25" Y="7.75" Width="1.5" />
+    <InheritanceLine Type="DataAccessLayer.DataBaseHandler" ManuallyRouted="true">
+      <Path>
+        <Point X="3.75" Y="11" />
+        <Point X="3.75" Y="10.428" />
+        <Point X="6" Y="10.428" />
+        <Point X="6" Y="10.137" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LogicLayer.Match">
+    <Position X="15.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LogicLayer.MatchService">
+    <Position X="3" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LogicLayer.TournamentService">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LogicLayer.UserService">
+    <Position X="1" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LogicLayer.Badminton">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LogicLayer.Basketball">
+    <Position X="12" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LogicLayer.Football">
+    <Position X="14.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LogicLayer.LeagueOfLegends">
+    <Position X="9.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LogicLayer.Sport">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LogicLayer.Tournament">
+    <Position X="12.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LogicLayer.TournamentTime">
+    <Position X="12.5" Y="9" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LogicLayer.User">
+    <Position X="8.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LogicLayer.WinRate">
+    <Position X="8.25" Y="9" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LogicLayer.Gender">
+    <Position X="10" Y="9" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="LogicLayer.IMatchRepository">
+    <Position X="3" Y="6" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="LogicLayer.ITournamentRepository">
+    <Position X="5.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="LogicLayer.IUserRepository">
+    <Position X="1" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -3,8 +3,40 @@
 @{
     ViewData["Title"] = "Home page";
 }
+<section class="recentNews">
+    <div class="container-news">
+        <h2 class="news-title">
+            Recent Tournaments
+        </h2>
+        <div class="row">
+            @if (Model.tournaments != null)
+            {
+                @foreach (var tournament in Model.tournaments)
+                {
+                    <form class="ct-blog col-sm-6 col-md-4">
+                        <div class="inner">
+                            <div class="fauxcrop">
+                                <a href="/SingleTournament?id=@tournament.Id"><img alt="News Entry" src="https://res.cloudinary.com/dssmw7qxi/image/upload/v1654692646/color-sport_hildpk.webp"></a>
+                            </div>
+                            <div class="ct-blog-content">
+                                <div class="ct-blog-date">
+                                    <span>@tournament.Time.Start.ToString("MMMM")</span><strong>@tournament.Time.Start.ToString("dd")</strong>
+                                </div>
+                                <h3 class="ct-blog-header">
+                                    @tournament.Name
+                                </h3>
+                                <h3 class="ct-blog-header">
+                                    @tournament.Sport.Name
+                                </h3>
+                                <h3 class="ct-blog-header">
+                                    @tournament.Type
+                                </h3>
+                            </div>
+                        </div>
+                    </form>
+                }
+            }
+        </div>
+    </div>
+</section>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>

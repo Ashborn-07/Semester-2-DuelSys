@@ -1,0 +1,160 @@
+﻿@page
+@model DuelSysWeb.Pages.ScheduleModel
+@{
+}
+<!-- Tournament go smeni s match class po kysno -->
+<!-- Sushto taka da se napravi i za minalite matchove kato se pokazva i rezultata -->
+<main class="Schedule">
+    <div class="events">
+        <div class="Event">
+            @foreach (var match in Model.matches)
+            {
+
+                @*if (DateTime.Now <= match.Date)
+                {*@
+                    if (Model.oldDate != match.Date)
+                    {
+                        <div class="EventDate">
+                            <div class="date">
+                                <span class="weekday">@match.Date.DayOfWeek</span>
+                                <span class="dash">-</span>
+                                <span class="monthday">@match.Date.ToString("M")</span>
+                            </div>
+                        </div>
+
+                        Model.oldDate = match.Date;
+                    }
+
+                    @if (match.Scores[0] != 0 || match.Scores[1] != 0)
+                    {
+                        <div class="EventMatch">
+                            <div class="single past event">
+                                <div class="Event EventTime">
+                                    <div class="time">
+                                        <span class="hour">19</span>
+                                        <span class="minute">00</span>
+                                    </div>
+                                </div>
+                                @if (match.Winner == match.Player1.Id)
+                                {
+                                    <div class="teams winner-team1">
+                                        <div class="team team1">
+                                            <div class="team-info">
+                                                <h2>
+                                                    <span class="name">@match.Player1.UserName</span>
+                                                </h2>
+                                                <div class="winloss">@match.Player1.WinRate.Wins W-@match.Player1.WinRate.Loses L</div>
+                                            </div>
+                                        </div>
+                                        <div class="score">
+                                            <span class="scoreTeam1">@match.Scores[0]</span>
+                                            <span class="hyphen">-</span>
+                                            <span class="scoreTeam2">@match.Scores[1]</span>
+                                        </div>
+                                        <div class="team team2">
+                                            <div class="team-info">
+                                                <h2>
+                                                    <span class="name">@match.Player2.UserName</span>
+                                                </h2>
+                                                <div class="winloss">@match.Player2.WinRate.Wins W-@match.Player2.WinRate.Loses L</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="button" class="league">
+                                        <div class="name">@match.Tournament.Name</div>
+                                        <div class="strategy">@match.Tournament.Location</div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="teams winner-team2">
+                                        <div class="team team1">
+                                            <div class="team-info">
+                                                <h2>
+                                                    <span class="name">@match.Player1.UserName</span>
+                                                </h2>
+                                                <div class="winloss">@match.Player1.WinRate.Wins W-@match.Player1.WinRate.Loses L</div>
+                                            </div>
+                                        </div>
+                                        <div class="score">
+                                            <span class="scoreTeam1">@match.Scores[0]</span>
+                                            <span class="hyphen">-</span>
+                                            <span class="scoreTeam2">@match.Scores[1]</span>
+                                        </div>
+                                        <div class="team team2">
+                                            <div class="team-info">
+                                                <h2>
+                                                    <span class="name">@match.Player2.UserName</span>
+                                                </h2>
+                                                <div class="winloss">@match.Player2.WinRate.Wins W-@match.Player2.WinRate.Loses L</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="button" class="league">
+                                        <div class="name">@match.Tournament.Name</div>
+                                        <div class="strategy">@match.Tournament.Location</div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="EventMatch">
+                            <div class="single future event">
+                                <div class="EventTime">
+                                    <div class="time">
+                                        <span class="hour">19</span>
+                                        <span class="minute">00</span>
+                                    </div>
+                                </div>
+                                <div class="teams">
+                                    <div class="team team1">
+                                        <div class="team-info">
+                                            <h2>
+                                                <span class="name">@match.Player1.UserName</span>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                    <div class="versus">VS </div>
+                                    <div class="team team2">
+                                        <div class="team-info">
+                                            <h2>
+                                                <span class="name">@match.Player2.UserName</span>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="button" class="league">
+                                    <div class="name">@match.Tournament.Name</div>
+                                    <div class="strategy">@match.Tournament.Location</div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            @*}*@
+        </div>
+    </div>
+    <div class="sidebar">
+        <div class="EventFilter">
+            <div class="header">
+                <div class="filter">Filter</div>
+                <div class="save" role="button">SAVE</div>
+            </div>
+            <div class="leagues">
+                @foreach (var tournament in Model.tournaments)
+                {
+                    <button class="button league" type="submit">
+                        <div class="info">
+                            <div class="label1">
+                                <div class="name">@tournament.Name - @tournament.Sport.Name</div>
+                                <div class="region">@tournament.Location</div>
+                            </div>
+                        </div>
+                    </button>
+                }
+            </div>
+        </div>
+    </div>
+</main>
