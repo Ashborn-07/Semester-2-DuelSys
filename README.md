@@ -3,13 +3,10 @@
 Synthesis assignment semester 2 - DuelSys consisting of website application, desktop application and documentation.
 Vartan Dyulgeryan - i482834
 
-# Reference links
+# Website link
 
 - [Website application - Synthesis DuelSys inc.](https://i482834.luna.fhict.nl)
 
-If you're new to .NET you'll want to check out the tutorial, but if you're
-already a seasoned developer considering building your own .NET app with GitLab,
-this should all look very familiar.
 
 ## Notes
 **URS - design/wireframes**
@@ -26,8 +23,8 @@ The requirements are updated for the leader board and i removed the ones with th
 **Desktop application**
 
 For the score validation method is not the best to do two things at once because
-methods are supposed to do only one thing for example one bool method for the score is it valid 
-and one method of return type Match were it determines who is the winner.
+methods are supposed to do only one thing. For example one bool method for the score if it's valid 
+and one method of return type - Match, where it determines who is the winner.
 
 ## Major Requirements - Functional Requirements
 
