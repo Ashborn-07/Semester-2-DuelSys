@@ -11,10 +11,11 @@ Vartan Dyulgeryan - i482834
 ## Notes
 **URS - design/wireframes**
 
-I know the design is alot different from the wireframes, that is because
-for the desktop application to show the matches via calendar after some thought i realised 
-that it will just get too complicated to display it and then updating the scored of the matches as well will get 
-more complicated.
+I know the design is alot different from the wireframes, that is because:
+
+For the desktop application to show the matches via calendar after some thought i realised 
+that it will just get too unnecessarily complicated to display it and then updating the score of the matches as well will get 
+even more complicated if it's with a calendar.
 
 For the website at first i wanted to create a profile page but changed to leader board
 so that i could finish on time with the synthesis implementing one _major_ and one _minor_ requirement
